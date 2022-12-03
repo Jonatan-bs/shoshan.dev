@@ -17,11 +17,6 @@ module.exports = {
 	plugins: ["@typescript-eslint"],
 
 	rules: {
-		"vue/multi-word-component-names": [
-			"error",
-			{
-				ignores: ["index", "home"],
-			},
-		],
+		"vue/multi-word-component-names": "off",
 	},
 };
