@@ -1,0 +1,8 @@
+schema:
+    - "${CONTENTFULL_ACCESS_URI}":
+          headers:
+              Authorization: "Bearer ${CONTENTFULL_ACCESS_TOKEN}"
+generates:
+    schema.graphql:
+        plugins:
+            - schema-ast

@@ -1,0 +1,9 @@
+query home {
+	pageHomeCollection {
+		items {
+			contentAreaCollection {
+				
+			}
+		}
+	}
+}

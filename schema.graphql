@@ -1,0 +1,1062 @@
+"""Represents a binary file in a space. An asset can be any file type."""
+type Asset {
+  contentType(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  fileName(locale: String): String
+  height(locale: String): Int
+  linkedFrom(allowedLocales: [String]): AssetLinkingCollections
+  size(locale: String): Int
+  sys: Sys!
+  title(locale: String): String
+  url(locale: String, transform: ImageTransformOptions): String
+  width(locale: String): Int
+}
+
+type AssetCollection {
+  items: [Asset]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AssetFilter {
+  AND: [AssetFilter]
+  OR: [AssetFilter]
+  contentType: String
+  contentType_contains: String
+  contentType_exists: Boolean
+  contentType_in: [String]
+  contentType_not: String
+  contentType_not_contains: String
+  contentType_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  fileName: String
+  fileName_contains: String
+  fileName_exists: Boolean
+  fileName_in: [String]
+  fileName_not: String
+  fileName_not_contains: String
+  fileName_not_in: [String]
+  height: Int
+  height_exists: Boolean
+  height_gt: Int
+  height_gte: Int
+  height_in: [Int]
+  height_lt: Int
+  height_lte: Int
+  height_not: Int
+  height_not_in: [Int]
+  size: Int
+  size_exists: Boolean
+  size_gt: Int
+  size_gte: Int
+  size_in: [Int]
+  size_lt: Int
+  size_lte: Int
+  size_not: Int
+  size_not_in: [Int]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+  width: Int
+  width_exists: Boolean
+  width_gt: Int
+  width_gte: Int
+  width_in: [Int]
+  width_lt: Int
+  width_lte: Int
+  width_not: Int
+  width_not_in: [Int]
+}
+
+type AssetLinkingCollections {
+  blockAboutCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockAboutCollection
+  blockImageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockImageCollection
+  blockServicesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockServicesCollection
+  elmTimelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ElmTimelineCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+  servicesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ServicesCollection
+  sharedSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SharedSeoCollection
+}
+
+enum AssetOrder {
+  contentType_ASC
+  contentType_DESC
+  fileName_ASC
+  fileName_DESC
+  height_ASC
+  height_DESC
+  size_ASC
+  size_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
+  width_ASC
+  width_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/blockAbout)
+"""
+type BlockAbout implements Entry {
+  about(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): BlockAboutLinkingCollections
+  name(locale: String): String
+  subheading(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type BlockAboutCollection {
+  items: [BlockAbout]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BlockAboutFilter {
+  AND: [BlockAboutFilter]
+  OR: [BlockAboutFilter]
+  about: String
+  about_contains: String
+  about_exists: Boolean
+  about_in: [String]
+  about_not: String
+  about_not_contains: String
+  about_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  subheading: String
+  subheading_contains: String
+  subheading_exists: Boolean
+  subheading_in: [String]
+  subheading_not: String
+  subheading_not_contains: String
+  subheading_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type BlockAboutLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+}
+
+enum BlockAboutOrder {
+  name_ASC
+  name_DESC
+  subheading_ASC
+  subheading_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/blockImage)
+"""
+type BlockImage implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): BlockImageLinkingCollections
+  sys: Sys!
+}
+
+type BlockImageCollection {
+  items: [BlockImage]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BlockImageFilter {
+  AND: [BlockImageFilter]
+  OR: [BlockImageFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  sys: SysFilter
+}
+
+type BlockImageLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+}
+
+enum BlockImageOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/blockProjectsSection)
+"""
+type BlockProjectsSection implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): BlockProjectsSectionLinkingCollections
+  projectsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockProjectsSectionProjectsCollection
+  sys: Sys!
+  title(locale: String): String
+}
+
+type BlockProjectsSectionCollection {
+  items: [BlockProjectsSection]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BlockProjectsSectionFilter {
+  AND: [BlockProjectsSectionFilter]
+  OR: [BlockProjectsSectionFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  projectsCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type BlockProjectsSectionLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+}
+
+enum BlockProjectsSectionOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type BlockProjectsSectionProjectsCollection {
+  items: [Project]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/blockServices)
+"""
+type BlockServices implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  imageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  linkedFrom(allowedLocales: [String]): BlockServicesLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type BlockServicesCollection {
+  items: [BlockServices]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BlockServicesFilter {
+  AND: [BlockServicesFilter]
+  OR: [BlockServicesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  imageCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type BlockServicesLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+}
+
+enum BlockServicesOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/blockTimeline)
+"""
+type BlockTimeline implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  enitriesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockTimelineEnitriesCollection
+  linkedFrom(allowedLocales: [String]): BlockTimelineLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type BlockTimelineCollection {
+  items: [BlockTimeline]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type BlockTimelineEnitriesCollection {
+  items: [ElmTimeline]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input BlockTimelineFilter {
+  AND: [BlockTimelineFilter]
+  OR: [BlockTimelineFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  enitriesCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type BlockTimelineLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+}
+
+enum BlockTimelineOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type ContentfulMetadata {
+  tags: [ContentfulTag]!
+}
+
+input ContentfulMetadataFilter {
+  tags: ContentfulMetadataTagsFilter
+  tags_exists: Boolean
+}
+
+input ContentfulMetadataTagsFilter {
+  id_contains_all: [String]
+  id_contains_none: [String]
+  id_contains_some: [String]
+}
+
+"""
+Represents a tag entity for finding and organizing content easily.
+    Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+"""
+type ContentfulTag {
+  id: String
+  name: String
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z,
+    compliant with the 'date-time' format outlined in section 5.6 of
+    the RFC 3339 profile of the ISO 8601 standard for representation
+    of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""
+The 'Dimension' type represents dimensions as whole numeric values between `1` and `4000`.
+"""
+scalar Dimension
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/elmTimeline)
+"""
+type ElmTimeline implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  fromDate(locale: String): DateTime
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): ElmTimelineLinkingCollections
+  overwriteToDateWithNow(locale: String): Boolean
+  subHeading(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+  toDate(locale: String): DateTime
+}
+
+type ElmTimelineCollection {
+  items: [ElmTimeline]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ElmTimelineFilter {
+  AND: [ElmTimelineFilter]
+  OR: [ElmTimelineFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  fromDate: DateTime
+  fromDate_exists: Boolean
+  fromDate_gt: DateTime
+  fromDate_gte: DateTime
+  fromDate_in: [DateTime]
+  fromDate_lt: DateTime
+  fromDate_lte: DateTime
+  fromDate_not: DateTime
+  fromDate_not_in: [DateTime]
+  image_exists: Boolean
+  overwriteToDateWithNow: Boolean
+  overwriteToDateWithNow_exists: Boolean
+  overwriteToDateWithNow_not: Boolean
+  subHeading: String
+  subHeading_contains: String
+  subHeading_exists: Boolean
+  subHeading_in: [String]
+  subHeading_not: String
+  subHeading_not_contains: String
+  subHeading_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+  toDate: DateTime
+  toDate_exists: Boolean
+  toDate_gt: DateTime
+  toDate_gte: DateTime
+  toDate_in: [DateTime]
+  toDate_lt: DateTime
+  toDate_lte: DateTime
+  toDate_not: DateTime
+  toDate_not_in: [DateTime]
+}
+
+type ElmTimelineLinkingCollections {
+  blockTimelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockTimelineCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ElmTimelineOrder {
+  fromDate_ASC
+  fromDate_DESC
+  overwriteToDateWithNow_ASC
+  overwriteToDateWithNow_DESC
+  subHeading_ASC
+  subHeading_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+  toDate_ASC
+  toDate_DESC
+}
+
+interface Entry {
+  contentfulMetadata: ContentfulMetadata!
+  sys: Sys!
+}
+
+type EntryCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input EntryFilter {
+  AND: [EntryFilter]
+  OR: [EntryFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+}
+
+enum EntryOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""The 'HexColor' type represents color in `rgb:ffffff` string format."""
+scalar HexColor
+
+enum ImageFormat {
+  AVIF
+
+  """JPG image format."""
+  JPG
+
+  """
+  Progressive JPG format stores multiple passes of an image in progressively higher detail.
+          When a progressive image is loading, the viewer will first see a lower quality pixelated version which
+          will gradually improve in detail, until the image is fully downloaded. This is to display an image as
+          early as possible to make the layout look as designed.
+  """
+  JPG_PROGRESSIVE
+
+  """PNG image format"""
+  PNG
+
+  """
+  8-bit PNG images support up to 256 colors and weigh less than the standard 24-bit PNG equivalent.
+          The 8-bit PNG format is mostly used for simple images, such as icons or logos.
+  """
+  PNG8
+
+  """WebP image format."""
+  WEBP
+}
+
+enum ImageResizeFocus {
+  """Focus the resizing on the bottom."""
+  BOTTOM
+
+  """Focus the resizing on the bottom left."""
+  BOTTOM_LEFT
+
+  """Focus the resizing on the bottom right."""
+  BOTTOM_RIGHT
+
+  """Focus the resizing on the center."""
+  CENTER
+
+  """Focus the resizing on the largest face."""
+  FACE
+
+  """Focus the resizing on the area containing all the faces."""
+  FACES
+
+  """Focus the resizing on the left."""
+  LEFT
+
+  """Focus the resizing on the right."""
+  RIGHT
+
+  """Focus the resizing on the top."""
+  TOP
+
+  """Focus the resizing on the top left."""
+  TOP_LEFT
+
+  """Focus the resizing on the top right."""
+  TOP_RIGHT
+}
+
+enum ImageResizeStrategy {
+  """
+  Crops a part of the original image to fit into the specified dimensions.
+  """
+  CROP
+
+  """
+  Resizes the image to the specified dimensions, cropping the image if needed.
+  """
+  FILL
+
+  """Resizes the image to fit into the specified dimensions."""
+  FIT
+
+  """
+  Resizes the image to the specified dimensions, padding the image if needed.
+          Uses desired background color as padding color.
+  """
+  PAD
+
+  """
+  Resizes the image to the specified dimensions, changing the original aspect ratio if needed.
+  """
+  SCALE
+
+  """Creates a thumbnail from the image."""
+  THUMB
+}
+
+input ImageTransformOptions {
+  """
+  Desired background color, used with corner radius or `PAD` resize strategy.
+          Defaults to transparent (for `PNG`, `PNG8` and `WEBP`) or white (for `JPG` and `JPG_PROGRESSIVE`).
+  """
+  backgroundColor: HexColor
+
+  """
+  Desired corner radius in pixels.
+          Results in an image with rounded corners (pass `-1` for a full circle/ellipse).
+          Defaults to `0`. Uses desired background color as padding color,
+          unless the format is `JPG` or `JPG_PROGRESSIVE` and resize strategy is `PAD`, then defaults to white.
+  """
+  cornerRadius: Int
+
+  """Desired image format. Defaults to the original image format."""
+  format: ImageFormat
+
+  """Desired height in pixels. Defaults to the original image height."""
+  height: Dimension
+
+  """
+  Desired quality of the image in percents.
+          Used for `PNG8`, `JPG`, `JPG_PROGRESSIVE` and `WEBP` formats.
+  """
+  quality: Quality
+
+  """Desired resize focus area. Defaults to `CENTER`."""
+  resizeFocus: ImageResizeFocus
+
+  """Desired resize strategy. Defaults to `FIT`."""
+  resizeStrategy: ImageResizeStrategy
+
+  """Desired width in pixels. Defaults to the original image width."""
+  width: Dimension
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/pageHome)
+"""
+type PageHome implements Entry {
+  contentAreaCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeContentAreaCollection
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): PageHomeLinkingCollections
+  seo(locale: String, preview: Boolean): SharedSeo
+  sys: Sys!
+}
+
+type PageHomeCollection {
+  items: [PageHome]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type PageHomeContentAreaCollection {
+  items: [PageHomeContentAreaItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+union PageHomeContentAreaItem = BlockAbout | BlockImage | BlockProjectsSection | BlockServices | BlockTimeline
+
+input PageHomeFilter {
+  AND: [PageHomeFilter]
+  OR: [PageHomeFilter]
+  contentAreaCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  seo: cfSharedSeoNestedFilter
+  seo_exists: Boolean
+  sys: SysFilter
+}
+
+type PageHomeLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PageHomeOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/project)
+"""
+type Project implements Entry {
+  contentAreaCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectContentAreaCollection
+  contentfulMetadata: ContentfulMetadata!
+  headerImage(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): ProjectLinkingCollections
+  seo(locale: String, preview: Boolean): SharedSeo
+  solutions(locale: String): [String]
+  sys: Sys!
+  teaserImage(locale: String, preview: Boolean): Asset
+  title(locale: String): String
+}
+
+type ProjectCollection {
+  items: [Project]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type ProjectContentAreaCollection {
+  items: [ProjectContentAreaItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+union ProjectContentAreaItem = BlockAbout | BlockImage | BlockProjectsSection | BlockServices
+
+input ProjectFilter {
+  AND: [ProjectFilter]
+  OR: [ProjectFilter]
+  contentAreaCollection_exists: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  headerImage_exists: Boolean
+  seo: cfSharedSeoNestedFilter
+  seo_exists: Boolean
+  solutions_contains_all: [String]
+  solutions_contains_none: [String]
+  solutions_contains_some: [String]
+  solutions_exists: Boolean
+  sys: SysFilter
+  teaserImage_exists: Boolean
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ProjectLinkingCollections {
+  blockProjectsSectionCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockProjectsSectionCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ProjectOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+The 'Quality' type represents quality as whole numeric values between `1` and `100`.
+"""
+scalar Quality
+
+type Query {
+  asset(id: String!, locale: String, preview: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  blockAbout(id: String!, locale: String, preview: Boolean): BlockAbout
+  blockAboutCollection(limit: Int = 100, locale: String, order: [BlockAboutOrder], preview: Boolean, skip: Int = 0, where: BlockAboutFilter): BlockAboutCollection
+  blockImage(id: String!, locale: String, preview: Boolean): BlockImage
+  blockImageCollection(limit: Int = 100, locale: String, order: [BlockImageOrder], preview: Boolean, skip: Int = 0, where: BlockImageFilter): BlockImageCollection
+  blockProjectsSection(id: String!, locale: String, preview: Boolean): BlockProjectsSection
+  blockProjectsSectionCollection(limit: Int = 100, locale: String, order: [BlockProjectsSectionOrder], preview: Boolean, skip: Int = 0, where: BlockProjectsSectionFilter): BlockProjectsSectionCollection
+  blockServices(id: String!, locale: String, preview: Boolean): BlockServices
+  blockServicesCollection(limit: Int = 100, locale: String, order: [BlockServicesOrder], preview: Boolean, skip: Int = 0, where: BlockServicesFilter): BlockServicesCollection
+  blockTimeline(id: String!, locale: String, preview: Boolean): BlockTimeline
+  blockTimelineCollection(limit: Int = 100, locale: String, order: [BlockTimelineOrder], preview: Boolean, skip: Int = 0, where: BlockTimelineFilter): BlockTimelineCollection
+  elmTimeline(id: String!, locale: String, preview: Boolean): ElmTimeline
+  elmTimelineCollection(limit: Int = 100, locale: String, order: [ElmTimelineOrder], preview: Boolean, skip: Int = 0, where: ElmTimelineFilter): ElmTimelineCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  pageHome(id: String!, locale: String, preview: Boolean): PageHome
+  pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
+  project(id: String!, locale: String, preview: Boolean): Project
+  projectCollection(limit: Int = 100, locale: String, order: [ProjectOrder], preview: Boolean, skip: Int = 0, where: ProjectFilter): ProjectCollection
+  services(id: String!, locale: String, preview: Boolean): Services
+  servicesCollection(limit: Int = 100, locale: String, order: [ServicesOrder], preview: Boolean, skip: Int = 0, where: ServicesFilter): ServicesCollection
+  sharedSeo(id: String!, locale: String, preview: Boolean): SharedSeo
+  sharedSeoCollection(limit: Int = 100, locale: String, order: [SharedSeoOrder], preview: Boolean, skip: Int = 0, where: SharedSeoFilter): SharedSeoCollection
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/services)
+"""
+type Services implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): ServicesLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ServicesCollection {
+  items: [Services]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ServicesFilter {
+  AND: [ServicesFilter]
+  OR: [ServicesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ServicesLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ServicesOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/sharedSeo)
+"""
+type SharedSeo implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): SharedSeoLinkingCollections
+  slug(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type SharedSeoCollection {
+  items: [SharedSeo]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input SharedSeoFilter {
+  AND: [SharedSeoFilter]
+  OR: [SharedSeoFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  image_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type SharedSeoLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pageHomeCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageHomeCollection
+  projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
+}
+
+enum SharedSeoOrder {
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type Sys {
+  environmentId: String!
+  firstPublishedAt: DateTime
+  id: String!
+  publishedAt: DateTime
+  publishedVersion: Int
+  spaceId: String!
+}
+
+input SysFilter {
+  firstPublishedAt: DateTime
+  firstPublishedAt_exists: Boolean
+  firstPublishedAt_gt: DateTime
+  firstPublishedAt_gte: DateTime
+  firstPublishedAt_in: [DateTime]
+  firstPublishedAt_lt: DateTime
+  firstPublishedAt_lte: DateTime
+  firstPublishedAt_not: DateTime
+  firstPublishedAt_not_in: [DateTime]
+  id: String
+  id_contains: String
+  id_exists: Boolean
+  id_in: [String]
+  id_not: String
+  id_not_contains: String
+  id_not_in: [String]
+  publishedAt: DateTime
+  publishedAt_exists: Boolean
+  publishedAt_gt: DateTime
+  publishedAt_gte: DateTime
+  publishedAt_in: [DateTime]
+  publishedAt_lt: DateTime
+  publishedAt_lte: DateTime
+  publishedAt_not: DateTime
+  publishedAt_not_in: [DateTime]
+  publishedVersion: Float
+  publishedVersion_exists: Boolean
+  publishedVersion_gt: Float
+  publishedVersion_gte: Float
+  publishedVersion_in: [Float]
+  publishedVersion_lt: Float
+  publishedVersion_lte: Float
+  publishedVersion_not: Float
+  publishedVersion_not_in: [Float]
+}
+
+input cfSharedSeoNestedFilter {
+  AND: [cfSharedSeoNestedFilter]
+  OR: [cfSharedSeoNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  image_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
