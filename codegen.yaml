@@ -1,8 +1,17 @@
+overwrite: true
 schema:
-    - "${CONTENTFULL_ACCESS_URI}":
+    - "${VITE_GQL_HOST}":
           headers:
-              Authorization: "Bearer ${CONTENTFULL_ACCESS_TOKEN}"
+              Authorization: "Bearer ${VITE_GQL_TOKEN}"
+documents: "./queries/**/*.gql"
 generates:
     schema.graphql:
         plugins:
             - schema-ast
+    operations-types.ts:
+        plugins:
+            - typescript
+            - typescript-operations
+            - typed-document-node
+        config:
+            dedupeFragments: true

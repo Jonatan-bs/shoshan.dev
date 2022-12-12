@@ -1,0 +1,95 @@
+query pageHome {
+	pageHomeCollection(limit: 1) {
+		items {
+			contentAreaCollection {
+				items {
+					...blockAbout
+					...blockImage
+					...blockProjectsSection
+					...blockServices
+					...blockTimeline
+				}
+			}
+		}
+	}
+}
+query pageProject($id: String!) {
+	project(id: $id) {
+		title
+		solutions
+		seo {
+			slug
+			description
+			image {
+				...contentfullImage
+			}
+		}
+		headerImage {
+			...contentfullImage
+		}
+		contentAreaCollection(limit: 50) {
+			items {
+				...blockAbout
+				...blockImage
+				...blockProjectsSection
+				...blockServices
+			}
+		}
+	}
+}
+
+fragment blockAbout on BlockAbout {
+	about
+	name
+	subheading
+	title
+}
+fragment blockImage on BlockImage {
+	image {
+		...contentfullImage
+	}
+}
+
+fragment blockProjectsSection on BlockProjectsSection {
+	projectsCollection(limit: 50) {
+		items {
+			title
+			teaserImage {
+				...contentfullImage
+			}
+		}
+	}
+	title
+}
+fragment blockServices on BlockServices {
+	title
+	imageCollection(limit: 50) {
+		items {
+			...contentfullImage
+		}
+	}
+}
+fragment blockTimeline on BlockTimeline {
+	title
+	enitriesCollection(limit: 50) {
+		items {
+			description
+			fromDate
+			toDate
+			image {
+				...contentfullImage
+			}
+			overwriteToDateWithNow
+			subHeading
+		}
+	}
+}
+fragment contentfullImage on Asset {
+	contentType
+	width
+	description
+	url
+	title
+	size
+	height
+}
