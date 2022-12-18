@@ -2,6 +2,10 @@ import plugin from "tailwindcss/plugin";
 
 module.exports = {
 	theme: {
+		letterSpacing: {
+			normal: "0",
+			wide: ".6rem",
+		},
 		container: {
 			center: true,
 			padding: {
@@ -43,6 +47,8 @@ module.exports = {
 		},
 
 		fontSize: {
+			xs: "1.2rem",
+			sm: "1.5rem",
 			base: "2.1rem",
 			md: "2.6rem",
 			lg: "3rem",

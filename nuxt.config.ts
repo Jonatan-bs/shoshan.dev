@@ -3,7 +3,10 @@
 export default defineNuxtConfig({
 	css: ["~/assets/styles/main.scss"],
 	modules: ["@nuxtjs/tailwindcss"],
-	components: [{ path: "~/components", extensions: ["vue"] }],
+	components: [
+		{ path: "~/components", extensions: ["vue"] },
+		{ path: "~/assets/svg", extensions: ["vue"], prefix: "svg" },
+	],
 	app: {
 		head: {
 			title: "Jonatan Shoshan - Webspecialist",

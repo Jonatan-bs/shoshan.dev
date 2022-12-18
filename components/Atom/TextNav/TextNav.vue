@@ -1,4 +1,4 @@
+<script lang="ts" src="./TextNav.ts" />
 <template>
-	<p class="text-base text-black-lacquer leading-none"><slot></slot></p>
+	<p class="text-xs md:text-base text-grey-robo-master leading-none"><slot></slot></p>
 </template>
-<script lang="ts" href="./TextNav.ts" />
