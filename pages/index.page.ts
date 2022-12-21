@@ -1,5 +1,4 @@
 import { PageHomeDocument, PageHomeQuery } from "~~/operations-types";
-import { cmsClient } from "~~/ressources/cmsClient";
 
 export default defineComponent({
 	name: "HomePage",
@@ -13,6 +12,7 @@ export default defineComponent({
 			{ title: "kontakt", to: "#" },
 		];
 		onMounted(async () => {
+			const { cmsClient } = useCmsClient();
 			try {
 				const response = await cmsClient.request(PageHomeDocument);
 				response.pageHomeCollection;

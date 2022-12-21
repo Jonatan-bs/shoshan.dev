@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+	runtimeConfig: {
+		public: {
+			CONTENTFULL_BASE_URL: process.env.CONTENTFULL_BASE_URL,
+			VITE_GQL_HOST: process.env.VITE_GQL_HOST,
+			VITE_GQL_TOKEN: process.env.VITE_GQL_TOKEN,
+		},
+	},
 	css: ["~/assets/styles/main.scss"],
 	modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge"],
 	components: [
