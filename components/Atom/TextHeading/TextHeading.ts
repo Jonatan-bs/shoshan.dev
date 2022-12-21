@@ -4,7 +4,7 @@ export default defineComponent({
 	name: "TextHeading",
 	props: {
 		type: {
-			type: String as PropType<"SECTION" | "H1" | "H2">,
+			type: String as PropType<"SECTION" | "H1" | "H2" | "H3">,
 			required: true,
 		},
 		tag: {
