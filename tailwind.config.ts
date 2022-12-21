@@ -10,7 +10,7 @@ module.exports = {
 			center: true,
 			padding: {
 				DEFAULT: "1rem",
-				xl: "14rem",
+				"2xl": "14rem",
 			},
 		},
 		screens: {
@@ -18,8 +18,8 @@ module.exports = {
 			md: "768px",
 			lg: "1024px",
 			xl: "1280px",
-			"2xl": "1440px",
-			"3xl": "1920px",
+			"2xl": "1640px",
+			"4xl": "1920px",
 		},
 		colors: {
 			// BLACKS
@@ -55,7 +55,7 @@ module.exports = {
 			xl: "4.9rem",
 			"2xl": "7rem",
 		},
-		fontWeights: {
+		fontWeight: {
 			light: 300,
 			normal: 400,
 			bold: 700,
