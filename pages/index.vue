@@ -60,6 +60,7 @@
 										:src="project.teaserImage.url"
 										class="w-full h-full object-cover"
 										provider="contentful"
+										:alt="project.teaserImage.description || ''"
 										width="400"
 									/>
 								</AtomBaseCard>
@@ -90,6 +91,7 @@
 										class="w-full h-full object-cover"
 										provider="contentful"
 										width="500"
+										:alt="item.image.description || ''"
 									/>
 								</AtomBaseCard>
 							</div>
@@ -114,7 +116,23 @@
 								item.title
 							}}</AtomTextHeading>
 						</div>
-						<div class="main-grid"></div>
+						<div class="main-grid">
+							<template
+								v-for="(entry, index) in item.enitriesCollection?.items"
+								:key="index"
+							>
+								<MoleculeGlowBall>
+									<nuxt-img
+										v-if="entry?.image?.url"
+										:src="entry.image.url"
+										class="w-full h-full object-contain"
+										provider="contentful"
+										width="500"
+										:alt="entry.image.description || ''"
+									/>
+								</MoleculeGlowBall>
+							</template>
+						</div>
 					</template>
 				</section>
 			</template>

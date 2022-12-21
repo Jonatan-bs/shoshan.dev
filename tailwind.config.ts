@@ -2,6 +2,22 @@ import plugin from "tailwindcss/plugin";
 
 module.exports = {
 	theme: {
+		extend: {
+			keyframes: {
+				rotate: {
+					"0%": {
+						transform: "rotate(0deg)",
+					},
+					"100%": {
+						transform: "rotate(360deg)",
+					},
+				},
+			},
+
+			animation: {
+				rotate: "rotate  1s linear infinite",
+			},
+		},
 		letterSpacing: {
 			normal: "0",
 			wide: ".6rem",
@@ -24,6 +40,9 @@ module.exports = {
 		colors: {
 			// BLACKS
 			"black-lacquer": "#403E3E",
+
+			// BLUE
+			"blue-cornflower": "#162434",
 
 			// GREYS
 			"grey-cascading-white": "#F6F6F6",
