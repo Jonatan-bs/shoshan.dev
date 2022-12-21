@@ -1,9 +1,10 @@
-import { PageHomeDocument } from "~~/operations-types";
+import { PageHomeDocument, PageHomeQuery } from "~~/operations-types";
 import { cmsClient } from "~~/ressources/cmsClient";
 
 export default defineComponent({
 	name: "HomePage",
 	setup() {
+		const data = ref<PageHomeQuery["pageHomeCollection"] | null>(null);
 		const navItems = [
 			{ title: "portfolio", to: "#" },
 			{ title: "om mig", to: "#" },
@@ -13,12 +14,13 @@ export default defineComponent({
 		];
 		onMounted(async () => {
 			try {
-				const data = await cmsClient.request(PageHomeDocument);
-				console.log(data);
+				const response = await cmsClient.request(PageHomeDocument);
+				response.pageHomeCollection;
+				data.value = response.pageHomeCollection || null;
 			} catch (err) {
 				console.log(err);
 			}
 		});
-		return { navItems };
+		return { navItems, data };
 	},
 });

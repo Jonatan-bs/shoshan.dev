@@ -43,8 +43,14 @@ fragment blockAbout on BlockAbout {
 	name
 	subheading
 	title
+	image {
+		...contentfullImage
+	}
+	__typename
 }
 fragment blockImage on BlockImage {
+	__typename
+
 	image {
 		...contentfullImage
 	}
@@ -57,9 +63,11 @@ fragment blockProjectsSection on BlockProjectsSection {
 			teaserImage {
 				...contentfullImage
 			}
+			solutions
 		}
 	}
 	title
+	__typename
 }
 fragment blockServices on BlockServices {
 	title
@@ -68,6 +76,7 @@ fragment blockServices on BlockServices {
 			...contentfullImage
 		}
 	}
+	__typename
 }
 fragment blockTimeline on BlockTimeline {
 	title
@@ -83,6 +92,7 @@ fragment blockTimeline on BlockTimeline {
 			subHeading
 		}
 	}
+	__typename
 }
 fragment contentfullImage on Asset {
 	contentType
