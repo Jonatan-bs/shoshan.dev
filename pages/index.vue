@@ -33,7 +33,10 @@
 								<nuxt-img
 									v-if="image?.url"
 									:src="image.url"
+									:alt="image.description || ''"
 									class="w-full h-full object-contain"
+									provider="contentful"
+									width="250"
 								/>
 							</AtomBaseCard>
 						</div>
@@ -56,6 +59,8 @@
 										v-if="project?.teaserImage?.url"
 										:src="project.teaserImage.url"
 										class="w-full h-full object-cover"
+										provider="contentful"
+										width="400"
 									/>
 								</AtomBaseCard>
 								<AtomTextHeading tag="h3" type="H3">
@@ -83,6 +88,8 @@
 										v-if="item?.image?.url"
 										:src="item.image.url"
 										class="w-full h-full object-cover"
+										provider="contentful"
+										width="500"
 									/>
 								</AtomBaseCard>
 							</div>

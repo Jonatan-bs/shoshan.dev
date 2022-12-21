@@ -2,11 +2,24 @@
 
 export default defineNuxtConfig({
 	css: ["~/assets/styles/main.scss"],
-	modules: ["@nuxtjs/tailwindcss"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge"],
 	components: [
 		{ path: "~/components", extensions: ["vue"] },
 		{ path: "~/assets/svg", extensions: ["vue"], prefix: "svg" },
 	],
+	image: {
+		contentful: {
+			baseURL: process.env.CONTENTFULL_BASE_URL,
+		},
+		screens: {
+			sm: 640,
+			md: 768,
+			lg: 1024,
+			xl: 1280,
+			"2xl": 1640,
+			"4xl": 1920,
+		},
+	},
 	app: {
 		head: {
 			title: "Jonatan Shoshan - Webspecialist",
