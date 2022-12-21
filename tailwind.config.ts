@@ -37,6 +37,9 @@ module.exports = {
 			"2xl": "1640px",
 			"4xl": "1920px",
 		},
+		strokeWidth: {
+			"5": ".5rem",
+		},
 		colors: {
 			// BLACKS
 			"black-lacquer": "#403E3E",

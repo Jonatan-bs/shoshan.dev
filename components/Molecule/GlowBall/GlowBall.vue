@@ -1,6 +1,6 @@
 <script src="./GlowBall.ts" lang="ts"></script>
 <template>
-	<div class="relative w-[15rem] aspect-1" @click="isActive = !isActive">
+	<div class="relative w-[15rem] aspect-1">
 		<div
 			class="absolute overflow-hidden bg-grey-robo-master rounded-[50%] z-10 transition-[inset, background-color] ease-out duration-300"
 			:class="isActive ? 'inset-2xs bg-blue-cornflower' : 'inset-[0]'"

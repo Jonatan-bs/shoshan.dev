@@ -117,21 +117,66 @@
 							}}</AtomTextHeading>
 						</div>
 						<div class="main-grid">
-							<template
-								v-for="(entry, index) in item.enitriesCollection?.items"
-								:key="index"
-							>
-								<MoleculeGlowBall>
-									<nuxt-img
-										v-if="entry?.image?.url"
-										:src="entry.image.url"
-										class="w-full h-full object-contain"
-										provider="contentful"
-										width="500"
-										:alt="entry.image.description || ''"
-									/>
-								</MoleculeGlowBall>
-							</template>
+							<div class="flex-col flex">
+								<template
+									v-for="(entry, index) in item.enitriesCollection?.items"
+									:key="index"
+								>
+									<div class="flex flex-col items-center">
+										<MoleculeGlowBall
+											:is-active="activeGlowBallIndexes?.includes(index)"
+										>
+											<nuxt-img
+												v-if="entry?.image?.url"
+												:src="entry.image.url"
+												class="w-full h-full object-contain"
+												provider="contentful"
+												width="500"
+												:alt="entry.image.description || ''"
+											/>
+										</MoleculeGlowBall>
+										<div class="relative">
+											<svg height="30rem" width="1rem">
+												<line
+													x1="2.5"
+													y1="0"
+													x2="2.5"
+													y2="100%"
+													class="stroke-5 stroke-grey-robo-master"
+												/>
+											</svg>
+											<div ref="refLineWrapper" class="absolute inset-[0]">
+												<svg
+													height="100%"
+													width="1rem"
+													class="absolute inset-[0] blur-sm"
+												>
+													<line
+														x1="2.5"
+														y1="0"
+														x2="2.5"
+														y2="100%"
+														class="stroke-5 stroke-blue-cornflower"
+													/>
+												</svg>
+												<svg
+													height="100%"
+													width="1rem"
+													class="absolute inset-[0]"
+												>
+													<line
+														x1="2.5"
+														y1="0"
+														x2="2.5"
+														y2="100%"
+														class="stroke-5 stroke-blue-cornflower"
+													/>
+												</svg>
+											</div>
+										</div>
+									</div>
+								</template>
+							</div>
 						</div>
 					</template>
 				</section>

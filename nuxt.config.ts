@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+	build: {
+		transpile: ["gsap"],
+	},
 	runtimeConfig: {
 		public: {
 			CONTENTFULL_BASE_URL: process.env.CONTENTFULL_BASE_URL,

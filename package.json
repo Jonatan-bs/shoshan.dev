@@ -36,6 +36,7 @@
 		"typescript": "^4.9.4"
 	},
 	"dependencies": {
-		"graphql-request": "^5.0.0"
+		"graphql-request": "^5.0.0",
+		"gsap": "^3.11.3"
 	}
 }
