@@ -1,20 +1,20 @@
 <script src="./index.page.ts" lang="ts" />
 <template>
-	<div class="container">
-		<section>
-			<div class="absolute top-[0] left-[0] w-full flex justify-center">
-				<OrganismNavPrimary :items="navItems" />
-			</div>
-			<div class="h-screen w-full flex items-center justify-center">
-				<OrganismLogo />
-			</div>
-		</section>
-		<main class="mt-md">
+	<section>
+		<div class="absolute top-[0] left-[0] w-full flex justify-center">
+			<OrganismNavPrimary :items="navItems" />
+		</div>
+		<div class="h-screen w-full flex items-center justify-center">
+			<OrganismLogo />
+		</div>
+	</section>
+	<main class="mt-md">
+		<div class="container">
 			<template v-if="data?.contentAreaCollection.length">
 				<section
 					v-for="(item, index) in data?.contentAreaCollection"
 					:key="index"
-					class="mb-3xl"
+					:class="index !== data?.contentAreaCollection.length - 1 && 'mb-3xl'"
 				>
 					<!-- TEKNOLOGIER -->
 					<template v-if="item && item.__typename === 'BlockServices'">
@@ -114,13 +114,16 @@
 							}}</AtomTextHeading>
 						</div>
 						<div class="main-grid">
-							<section class="col-span-10 col-start-2">
+							<div class="col-span-10 col-start-2">
 								<OrganismTimeline :entries="item.entries" />
-							</section>
+							</div>
 						</div>
 					</template>
 				</section>
 			</template>
-		</main>
-	</div>
+		</div>
+	</main>
+	<section class="flex items-center justify-center h-screen w-screen">
+		<AtomTextHeading tag="h2" type="SECTION">- KONTAKT -</AtomTextHeading>
+	</section>
 </template>
