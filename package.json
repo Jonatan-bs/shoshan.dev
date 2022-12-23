@@ -37,6 +37,7 @@
 	},
 	"dependencies": {
 		"graphql-request": "^5.0.0",
-		"gsap": "^3.11.3"
+		"gsap": "^3.11.3",
+		"moment": "^2.29.4"
 	}
 }

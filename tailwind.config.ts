@@ -58,6 +58,7 @@ module.exports = {
 			sans: ["Lato", "sans-serif"],
 		},
 		spacing: {
+			"3xs": "1rem",
 			"2xs": "1.6rem",
 			xs: "2rem",
 			sm: "3rem",

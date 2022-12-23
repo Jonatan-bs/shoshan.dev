@@ -85,6 +85,7 @@ fragment blockTimeline on BlockTimeline {
 			description
 			fromDate
 			toDate
+			title
 			image {
 				...contentfullImage
 			}

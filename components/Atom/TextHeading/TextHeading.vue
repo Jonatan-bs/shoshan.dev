@@ -8,6 +8,9 @@
 		>
 			<slot />
 		</component>
+		<component :is="tag" v-if="type === 'H2'" class="text-black-lacquer font-black text-xl">
+			<slot />
+		</component>
 		<component :is="tag" v-if="type === 'H3'" class="text-black-lacquer font-bold text-lg">
 			<slot />
 		</component>

@@ -10,14 +10,14 @@
 			</div>
 		</section>
 		<main class="mt-md">
-			<template v-if="data?.items.length">
+			<template v-if="data?.contentAreaCollection.length">
 				<section
-					v-for="(item, index) in data?.items[0]?.contentAreaCollection?.items"
+					v-for="(item, index) in data?.contentAreaCollection"
 					:key="index"
 					class="mb-3xl"
 				>
 					<!-- TEKNOLOGIER -->
-					<template v-if="item?.__typename === 'BlockServices'">
+					<template v-if="item && item.__typename === 'BlockServices'">
 						<div class="mb-md">
 							<AtomTextHeading tag="h2" type="SECTION">{{
 								item.title
@@ -25,15 +25,14 @@
 						</div>
 						<div class="main-grid">
 							<AtomBaseCard
-								v-for="(image, index) in item.imageCollection?.items"
+								v-for="(image, index) in item.images"
 								:key="index"
 								class="col-span-6 sm:col-span-4 lg:col-span-2"
 								:has-padding="true"
 							>
 								<nuxt-img
-									v-if="image?.url"
 									:src="image.url"
-									:alt="image.description || ''"
+									:alt="image.alt"
 									class="w-full h-full object-contain"
 									provider="contentful"
 									width="250"
@@ -50,17 +49,16 @@
 						</div>
 						<div class="main-grid">
 							<article
-								v-for="(project, index) in item.projectsCollection?.items"
+								v-for="(project, index) in item.projects"
 								:key="index"
 								class="col-span-12 sm:col-span-6 lg:col-span-4 w-full"
 							>
 								<AtomBaseCard :is-wide="true" class="mb-xs">
 									<nuxt-img
-										v-if="project?.teaserImage?.url"
 										:src="project.teaserImage.url"
 										class="w-full h-full object-cover"
 										provider="contentful"
-										:alt="project.teaserImage.description || ''"
+										:alt="project.teaserImage.alt"
 										width="400"
 									/>
 								</AtomBaseCard>
@@ -86,12 +84,11 @@
 							<div class="col-span-5">
 								<AtomBaseCard :is-wide="true">
 									<nuxt-img
-										v-if="item?.image?.url"
 										:src="item.image.url"
 										class="w-full h-full object-cover"
 										provider="contentful"
 										width="500"
-										:alt="item.image.description || ''"
+										:alt="item.image.alt"
 									/>
 								</AtomBaseCard>
 							</div>
@@ -117,66 +114,9 @@
 							}}</AtomTextHeading>
 						</div>
 						<div class="main-grid">
-							<div class="flex-col flex">
-								<template
-									v-for="(entry, index) in item.enitriesCollection?.items"
-									:key="index"
-								>
-									<div class="flex flex-col items-center">
-										<MoleculeGlowBall
-											:is-active="activeGlowBallIndexes?.includes(index)"
-										>
-											<nuxt-img
-												v-if="entry?.image?.url"
-												:src="entry.image.url"
-												class="w-full h-full object-contain"
-												provider="contentful"
-												width="500"
-												:alt="entry.image.description || ''"
-											/>
-										</MoleculeGlowBall>
-										<div class="relative">
-											<svg height="30rem" width="1rem">
-												<line
-													x1="2.5"
-													y1="0"
-													x2="2.5"
-													y2="100%"
-													class="stroke-5 stroke-grey-robo-master"
-												/>
-											</svg>
-											<div ref="refLineWrapper" class="absolute inset-[0]">
-												<svg
-													height="100%"
-													width="1rem"
-													class="absolute inset-[0] blur-sm"
-												>
-													<line
-														x1="2.5"
-														y1="0"
-														x2="2.5"
-														y2="100%"
-														class="stroke-5 stroke-blue-cornflower"
-													/>
-												</svg>
-												<svg
-													height="100%"
-													width="1rem"
-													class="absolute inset-[0]"
-												>
-													<line
-														x1="2.5"
-														y1="0"
-														x2="2.5"
-														y2="100%"
-														class="stroke-5 stroke-blue-cornflower"
-													/>
-												</svg>
-											</div>
-										</div>
-									</div>
-								</template>
-							</div>
+							<section class="col-span-10 col-start-2">
+								<OrganismTimeline :entries="item.entries" />
+							</section>
 						</div>
 					</template>
 				</section>
