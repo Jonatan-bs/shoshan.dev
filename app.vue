@@ -5,7 +5,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 </script>
 <template>
-	<div>
+	<NuxtLayout>
 		<NuxtPage />
-	</div>
+	</NuxtLayout>
 </template>

@@ -54,7 +54,7 @@
 			<!-- Ball end -->
 			<div class="pl-sm mt-[4rem]">
 				<div ref="refAnimateFromBottom">
-					<AtomTextHeading type="H2" class="mb-3xs">
+					<AtomTextHeading type="H1" class="mb-3xs">
 						{{ entry.title }}
 					</AtomTextHeading>
 					<AtomTextSubheading size="SMALL" color="DEFAULT" class="mb-xs">

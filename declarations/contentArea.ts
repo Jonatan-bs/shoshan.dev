@@ -27,6 +27,8 @@ export declare interface IBlockProjectsSection {
 		title: string;
 		teaserImage: IImage;
 		solutions: string[];
+		slug: string;
+		id: string;
 	}[];
 	__typename: "BlockProjectsSection";
 }

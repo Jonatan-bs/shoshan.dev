@@ -17,6 +17,9 @@ query pageProject($id: String!) {
 	project(id: $id) {
 		title
 		solutions
+		headerImage {
+			...contentfullImage
+		}
 		seo {
 			slug
 			description
@@ -27,7 +30,7 @@ query pageProject($id: String!) {
 		headerImage {
 			...contentfullImage
 		}
-		contentAreaCollection(limit: 50) {
+		contentAreaCollection(limit: 40) {
 			items {
 				...blockAbout
 				...blockImage
@@ -57,13 +60,19 @@ fragment blockImage on BlockImage {
 }
 
 fragment blockProjectsSection on BlockProjectsSection {
-	projectsCollection(limit: 50) {
+	projectsCollection(limit: 3) {
 		items {
 			title
 			teaserImage {
 				...contentfullImage
 			}
 			solutions
+			seo {
+				slug
+			}
+			sys {
+				id
+			}
 		}
 	}
 	title
@@ -71,7 +80,7 @@ fragment blockProjectsSection on BlockProjectsSection {
 }
 fragment blockServices on BlockServices {
 	title
-	imageCollection(limit: 50) {
+	imageCollection(limit: 40) {
 		items {
 			...contentfullImage
 		}
@@ -80,7 +89,7 @@ fragment blockServices on BlockServices {
 }
 fragment blockTimeline on BlockTimeline {
 	title
-	enitriesCollection(limit: 50) {
+	enitriesCollection(limit: 40) {
 		items {
 			description
 			fromDate
