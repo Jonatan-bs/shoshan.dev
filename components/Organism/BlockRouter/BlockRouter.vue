@@ -2,14 +2,16 @@
 <template v-if="contentAreaBlocks.length">
 	<section
 		v-for="(item, index) in contentAreaCollection"
-		:id="item && item.__typename + index"
 		:key="index"
-		class="scroll-mt-lg"
 		:class="index !== (contentAreaCollection && contentAreaCollection.length - 1) && 'mb-3xl'"
 	>
 		<!-- TEKNOLOGIER -->
 		<template v-if="item && item.__typename === 'BlockServices'">
-			<div class="mb-md">
+			<div
+				:id="(setHashIds && item && createId(item.title)) || undefined"
+				ref="refHashElm"
+				class="mb-md scroll-mt-lg"
+			>
 				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
@@ -31,7 +33,11 @@
 		</template>
 		<!-- Projects -->
 		<template v-if="item?.__typename === 'BlockProjectsSection'">
-			<div class="mb-md">
+			<div
+				:id="(setHashIds && item && createId(item.title)) || undefined"
+				ref="refHashElm"
+				class="mb-md scroll-mt-lg"
+			>
 				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
@@ -39,7 +45,7 @@
 					v-for="(project, index) in item.projects"
 					:key="index"
 					:to="'/projekt/' + project.id"
-					class="col-span-12 sm:col-span-6 lg:col-span-4 w-full"
+					class="col-span-12 sm:col-span-6 lg:col-span-4 w-full md:mb-auto mb-md"
 				>
 					<article>
 						<AtomBaseCard :is-wide="true" class="mb-xs">
@@ -60,11 +66,15 @@
 		</template>
 		<!-- About -->
 		<template v-if="item?.__typename === 'BlockAbout'">
-			<div class="mb-md">
+			<div
+				:id="(setHashIds && item && createId(item.title)) || undefined"
+				ref="refHashElm"
+				class="mb-md scroll-mt-lg"
+			>
 				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
-				<div class="col-span-5">
+				<div class="col-span-12 md:col-span-5">
 					<AtomBaseCard :is-wide="true">
 						<nuxt-img
 							:src="item.image.url"
@@ -75,7 +85,7 @@
 						/>
 					</AtomBaseCard>
 				</div>
-				<div class="col-span-6 pl-sm">
+				<div class="col-span-12 md:col-span-6 pl-sm">
 					<AtomTextHeading tag="h3" type="H2">{{ item.name }}</AtomTextHeading>
 
 					<AtomTextSubheading class="mb-xs" :size="'SMALL'" color="LIGHT">
@@ -89,7 +99,11 @@
 		</template>
 		<!-- Timeline -->
 		<template v-if="item?.__typename === 'BlockTimeline'">
-			<div class="mb-md">
+			<div
+				:id="(setHashIds && item && createId(item.title)) || undefined"
+				ref="refHashElm"
+				class="mb-md scroll-mt-lg"
+			>
 				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
 			</div>
 			<div class="main-grid">

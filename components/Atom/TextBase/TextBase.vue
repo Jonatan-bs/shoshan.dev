@@ -3,7 +3,7 @@
 	<component
 		:is="tag"
 		v-if="type === 'DEFAULT'"
-		class="text-grey-robo-master font-normal text-base"
+		class="text-grey-robo-master font-normal text-sm md:text-base"
 	>
 		<slot />
 	</component>

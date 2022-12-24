@@ -1,9 +1,9 @@
 <script src="./GlowBall.ts" lang="ts"></script>
 <template>
-	<div class="relative w-[15rem] aspect-1">
+	<div class="relative w-[7rem] md:w-[15rem] aspect-1">
 		<div
 			class="absolute overflow-hidden bg-grey-robo-master rounded-[50%] z-10 transition-[inset, background-color] ease-out duration-300"
-			:class="isActive ? 'inset-2xs bg-blue-cornflower' : 'inset-[0]'"
+			:class="isActive ? 'inset-4xs md:inset-2xs bg-blue-cornflower' : 'inset-[0]'"
 		>
 			<div class="p-2xs w-full h-full">
 				<slot />

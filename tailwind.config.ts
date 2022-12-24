@@ -1,6 +1,7 @@
 import plugin from "tailwindcss/plugin";
 
 module.exports = {
+	mode: "jit",
 	theme: {
 		extend: {
 			keyframes: {
@@ -41,6 +42,10 @@ module.exports = {
 			"5": ".5rem",
 		},
 		colors: {
+			transparent: "transparent",
+			// WHITE
+			white: "#FFFFFF",
+
 			// BLACKS
 			"black-lacquer": "#403E3E",
 
@@ -58,6 +63,7 @@ module.exports = {
 			sans: ["Lato", "sans-serif"],
 		},
 		spacing: {
+			"4xs": ".7rem",
 			"3xs": "1rem",
 			"2xs": "1.6rem",
 			xs: "2rem",

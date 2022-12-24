@@ -2,7 +2,7 @@
 <template>
 	<div v-for="(entry, index) in entries" :key="index">
 		<div class="flex">
-			<div class="flex-shrink-0 pr-sm mt-[5rem]">
+			<div class="md:block hidden flex-shrink-0 pr-sm mt-[5rem]">
 				<AtomTextBase>
 					{{ formatDate(entry.fromDate) }} -
 					{{ entry.overwriteToDateWithNow ? "Nu" : formatDate(entry.toDate) }}
@@ -52,8 +52,12 @@
 				</div>
 			</div>
 			<!-- Ball end -->
-			<div class="pl-sm mt-[4rem]">
+			<div class="pl-2xs md:pl-sm mt-[2rem] md:mt-[4rem]">
 				<div ref="refAnimateFromBottom">
+					<AtomTextBase class="md:hidden block mb-2xs">
+						{{ formatDate(entry.fromDate) }} -
+						{{ entry.overwriteToDateWithNow ? "Nu" : formatDate(entry.toDate) }}
+					</AtomTextBase>
 					<AtomTextHeading type="H1" class="mb-3xs">
 						{{ entry.title }}
 					</AtomTextHeading>

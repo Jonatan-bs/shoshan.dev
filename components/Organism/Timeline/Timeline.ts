@@ -8,6 +8,7 @@ export default defineNuxtComponent({
 	},
 	setup() {
 		const { formatDate } = useFormatDate();
+		const ctx = ref<(gsap.core.Tween | gsap.core.Timeline)[]>([]);
 
 		const refAnimateFromBottom = ref<HTMLElement[] | null>(null);
 
@@ -30,66 +31,80 @@ export default defineNuxtComponent({
 				transform: "translateX(0rem)",
 			};
 			if (currentValue < oldValue && animateFromRightwrapperNextElm) {
-				gsap.fromTo(
-					animateFromRightwrapperNextElm.querySelectorAll(":scope > *"),
-					toAnimation,
-					fromAnimation
+				ctx.value.push(
+					gsap.fromTo(
+						animateFromRightwrapperNextElm.querySelectorAll(":scope > *"),
+						toAnimation,
+						fromAnimation
+					)
 				);
 			} else if (currentValue > oldValue && animateFromRightwrapper) {
-				gsap.fromTo(
-					animateFromRightwrapper.querySelectorAll(":scope > *"),
-					fromAnimation,
-					toAnimation
+				ctx.value.push(
+					gsap.fromTo(
+						animateFromRightwrapper.querySelectorAll(":scope > *"),
+						fromAnimation,
+						toAnimation
+					)
 				);
 			}
 		});
 
 		onMounted(async () => {
 			await nextTick();
-
-			refAnimateFromBottom.value &&
-				refAnimateFromBottom.value.forEach((elmWrapper: HTMLElement) => {
-					elmWrapper.querySelectorAll<HTMLElement>(":scope > *").forEach((elm) => {
-						elm.style.opacity = "0";
+			setTimeout(() => {
+				refAnimateFromBottom.value &&
+					refAnimateFromBottom.value.forEach((elmWrapper: HTMLElement) => {
+						elmWrapper.querySelectorAll<HTMLElement>(":scope > *").forEach((elm) => {
+							elm.style.opacity = "0";
+						});
 					});
-				});
 
-			// Animate line
-			if (refLineWrapper.value) {
-				refLineWrapper.value.forEach((lineWrapper) => {
-					gsap.timeline({
-						defaults: { duration: 1 },
-						scrollTrigger: {
-							trigger: lineWrapper,
-							scrub: 1,
-							start: "top 60%",
-							end: "bottom 60%",
-							onEnter: () => {
-								if (activeGlowBallIndexes.value === -1)
-									activeGlowBallIndexes.value++;
-							},
-							onEnterBack: () => {
-								activeGlowBallIndexes.value--;
-							},
-							onLeave: function () {
-								activeGlowBallIndexes.value++;
-							},
-							onLeaveBack: function () {
-								if (activeGlowBallIndexes.value === 0)
-									activeGlowBallIndexes.value--;
-							},
-						},
-					}).fromTo(
-						lineWrapper.querySelectorAll("svg"),
-						{
-							height: "0%",
-						},
-						{
-							height: "100%",
-						}
-					);
-				});
-			}
+				// Animate line
+				if (refLineWrapper.value) {
+					refLineWrapper.value.forEach((lineWrapper) => {
+						ctx.value.push(
+							gsap
+								.timeline({
+									defaults: { duration: 1 },
+									scrollTrigger: {
+										trigger: lineWrapper,
+										scrub: 1,
+										start: "top 60%",
+										end: "bottom 60%",
+										onEnter: () => {
+											if (activeGlowBallIndexes.value === -1)
+												activeGlowBallIndexes.value++;
+										},
+										onEnterBack: () => {
+											activeGlowBallIndexes.value--;
+										},
+										onLeave: function () {
+											activeGlowBallIndexes.value++;
+										},
+										onLeaveBack: function () {
+											if (activeGlowBallIndexes.value === 0)
+												activeGlowBallIndexes.value--;
+										},
+									},
+								})
+								.fromTo(
+									lineWrapper.querySelectorAll("svg"),
+									{
+										height: "0%",
+									},
+									{
+										height: "100%",
+									}
+								)
+						);
+					});
+				}
+			}, 700);
+		});
+		onUnmounted(() => {
+			ctx.value.forEach((tl) => {
+				tl.revert();
+			});
 		});
 		return {
 			refLineWrapper,

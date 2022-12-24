@@ -7,7 +7,7 @@
 		></span>
 		<ul class="flex gap-2xs md:gap-sm">
 			<li v-for="(item, index) in items" :key="index" ref="navItem" class="list-none">
-				<NuxtLink :to="item.to" @click="activeIndex = index">
+				<NuxtLink :to="item.to">
 					<AtomTextNav class="pt-2xs capitalize">
 						{{ item.title }}
 					</AtomTextNav>
