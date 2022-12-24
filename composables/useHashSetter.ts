@@ -1,9 +1,19 @@
 import emitter from "tiny-emitter/instance";
 
+const tempDeactivated = ref(false);
+
 export const useHashSetter = (deactivated = false) => {
 	const observer = ref<IntersectionObserver>();
 	const refHashElm = ref<HTMLElement | HTMLElement[]>();
-	if (deactivated) return { refHashElm };
+
+	const tempDeactiveateHashSetter = (ms = 500) => {
+		tempDeactivated.value = true;
+		setTimeout(() => {
+			tempDeactivated.value = false;
+		}, ms);
+	};
+
+	if (deactivated) return { refHashElm, tempDeactiveateHashSetter };
 
 	onMounted(() => {
 		const options = {
@@ -14,6 +24,7 @@ export const useHashSetter = (deactivated = false) => {
 		const callback: IntersectionObserverCallback = (entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
+					if (tempDeactivated.value) return;
 					const hash = "#" + entry.target.id.replace(" ", "-").toLowerCase();
 					emitter.emit("hashChanged", hash);
 					history.pushState({}, "", hash);
@@ -39,5 +50,5 @@ export const useHashSetter = (deactivated = false) => {
 		}
 	});
 
-	return { refHashElm };
+	return { refHashElm, tempDeactiveateHashSetter };
 };

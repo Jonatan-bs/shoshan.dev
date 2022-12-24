@@ -1,7 +1,7 @@
 <script src="./index.page.ts" lang="ts" />
 <template>
 	<div>
-		<header class="fixed z-40 top-[0] left-[0] w-full">
+		<header class="fixed z-40 bottom-[0] md:bottom-auto md:top-[0] left-[0] w-full">
 			<div class="flex justify-center items-center gap-3xs group bg-white pb-xs">
 				<OrganismNavPrimary :items="navItems" />
 			</div>
@@ -18,7 +18,7 @@
 				/>
 			</div>
 		</main>
-		<div id="kontakt" ref="refHashElm" class="scroll-mt-3xl"></div>
+		<div id="kontakt" ref="refHashElm"></div>
 		<section class="flex items-center justify-center h-screen w-screen">
 			<AtomTextHeading tag="h2" type="SECTION">- KONTAKT -</AtomTextHeading>
 		</section>

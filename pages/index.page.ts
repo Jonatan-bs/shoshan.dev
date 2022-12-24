@@ -2,7 +2,7 @@ export default defineComponent({
 	name: "HomePage",
 	setup: async () => {
 		const { formatDate } = useFormatDate();
-		const { refHashElm } = useHashSetter();
+		const { refHashElm, tempDeactiveateHashSetter } = useHashSetter();
 
 		const { data } = await useAsyncData(() => $fetch("/api/pageHome"));
 		if (!data.value?.success || !data.value?.data) {
@@ -10,6 +10,7 @@ export default defineComponent({
 				statusCode: data.value?.status || 500,
 				statusMessage:
 					data.value?.status === 404 ? "Page Not Found" : "Something went wrong",
+				data: data.value,
 			});
 		}
 		const navItems = [
@@ -24,6 +25,7 @@ export default defineComponent({
 			navItems,
 			data: data.value.data,
 			formatDate,
+			tempDeactiveateHashSetter,
 		};
 	},
 });

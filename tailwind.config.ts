@@ -72,7 +72,7 @@ module.exports = {
 			lg: "7rem",
 			xl: "20rem",
 			"2xl": "35rem",
-			"3xl": "59rem",
+			"3xl": "45rem",
 		},
 
 		fontSize: {

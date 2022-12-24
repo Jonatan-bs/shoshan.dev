@@ -51,55 +51,53 @@ export default defineNuxtComponent({
 
 		onMounted(async () => {
 			await nextTick();
-			setTimeout(() => {
-				refAnimateFromBottom.value &&
-					refAnimateFromBottom.value.forEach((elmWrapper: HTMLElement) => {
-						elmWrapper.querySelectorAll<HTMLElement>(":scope > *").forEach((elm) => {
-							elm.style.opacity = "0";
-						});
+			refAnimateFromBottom.value &&
+				refAnimateFromBottom.value.forEach((elmWrapper: HTMLElement) => {
+					elmWrapper.querySelectorAll<HTMLElement>(":scope > *").forEach((elm) => {
+						elm.style.opacity = "0";
 					});
+				});
 
-				// Animate line
-				if (refLineWrapper.value) {
-					refLineWrapper.value.forEach((lineWrapper) => {
-						ctx.value.push(
-							gsap
-								.timeline({
-									defaults: { duration: 1 },
-									scrollTrigger: {
-										trigger: lineWrapper,
-										scrub: 1,
-										start: "top 60%",
-										end: "bottom 60%",
-										onEnter: () => {
-											if (activeGlowBallIndexes.value === -1)
-												activeGlowBallIndexes.value++;
-										},
-										onEnterBack: () => {
-											activeGlowBallIndexes.value--;
-										},
-										onLeave: function () {
+			// Animate line
+			if (refLineWrapper.value) {
+				refLineWrapper.value.forEach((lineWrapper) => {
+					ctx.value.push(
+						gsap
+							.timeline({
+								defaults: { duration: 1 },
+								scrollTrigger: {
+									trigger: lineWrapper,
+									scrub: 1,
+									start: "top 60%",
+									end: "bottom 60%",
+									onEnter: () => {
+										if (activeGlowBallIndexes.value === -1)
 											activeGlowBallIndexes.value++;
-										},
-										onLeaveBack: function () {
-											if (activeGlowBallIndexes.value === 0)
-												activeGlowBallIndexes.value--;
-										},
 									},
-								})
-								.fromTo(
-									lineWrapper.querySelectorAll("svg"),
-									{
-										height: "0%",
+									onEnterBack: () => {
+										activeGlowBallIndexes.value--;
 									},
-									{
-										height: "100%",
-									}
-								)
-						);
-					});
-				}
-			}, 700);
+									onLeave: function () {
+										activeGlowBallIndexes.value++;
+									},
+									onLeaveBack: function () {
+										if (activeGlowBallIndexes.value === 0)
+											activeGlowBallIndexes.value--;
+									},
+								},
+							})
+							.fromTo(
+								lineWrapper.querySelectorAll("svg"),
+								{
+									height: "0%",
+								},
+								{
+									height: "100%",
+								}
+							)
+					);
+				});
+			}
 		});
 		onUnmounted(() => {
 			ctx.value.forEach((tl) => {

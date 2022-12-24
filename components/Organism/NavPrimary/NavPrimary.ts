@@ -9,18 +9,17 @@ export default defineNuxtComponent({
 	},
 	setup(props) {
 		const route = useRoute();
-
+		const { tempDeactiveateHashSetter } = useHashSetter();
 		const selectedLine = ref<HTMLSpanElement | null>(null);
 		const navItem = ref<HTMLLIElement[] | null>(null);
 		const activeValue = ref<string>("");
-		const timeOut = ref<NodeJS.Timeout | null>(null);
 		emitter.on("hashChanged", (hash: string) => {
-			if (timeOut.value) clearTimeout(timeOut.value);
-			timeOut.value = setTimeout(() => {
-				activeValue.value = hash;
-			}, 100);
+			activeValue.value = hash;
 		});
-
+		const setActiveIndexByValue = (value: string) => {
+			tempDeactiveateHashSetter();
+			activeValue.value = value.replace("/", "");
+		};
 		const animateSelectedLine = () => {
 			if (navItem.value && selectedLine.value) {
 				const activeItemIndex = props.items.findIndex(
@@ -49,6 +48,6 @@ export default defineNuxtComponent({
 			window.removeEventListener("resize", animateSelectedLine);
 		});
 
-		return { selectedLine, activeValue, navItem };
+		return { selectedLine, activeValue, navItem, setActiveIndexByValue };
 	},
 });

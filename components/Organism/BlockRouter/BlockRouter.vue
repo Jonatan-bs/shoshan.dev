@@ -12,7 +12,9 @@
 				ref="refHashElm"
 				class="mb-md scroll-mt-lg"
 			>
-				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
+				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
+					item.title
+				}}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
 				<AtomBaseCard
@@ -38,20 +40,22 @@
 				ref="refHashElm"
 				class="mb-md scroll-mt-lg"
 			>
-				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
+				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
+					item.title
+				}}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
 				<NuxtLink
 					v-for="(project, index) in item.projects"
 					:key="index"
 					:to="'/projekt/' + project.id"
-					class="col-span-12 sm:col-span-6 lg:col-span-4 w-full md:mb-auto mb-md"
+					class="col-span-12 sm:col-span-6 lg:col-span-4 w-full md:mb-auto mb-md group"
 				>
 					<article>
 						<AtomBaseCard :is-wide="true" class="mb-xs">
 							<nuxt-img
 								:src="project.teaserImage.url"
-								class="w-full h-full object-cover"
+								class="w-full h-full object-cover group-hover:scale-110 transition-[transform]"
 								provider="contentful"
 								:alt="project.teaserImage.alt"
 								width="400"
@@ -71,7 +75,9 @@
 				ref="refHashElm"
 				class="mb-md scroll-mt-lg"
 			>
-				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
+				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
+					item.title
+				}}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
 				<div class="col-span-12 md:col-span-5">
@@ -104,7 +110,9 @@
 				ref="refHashElm"
 				class="mb-md scroll-mt-lg"
 			>
-				<AtomTextHeading tag="h2" type="SECTION">{{ item.title }}</AtomTextHeading>
+				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
+					item.title
+				}}</AtomTextHeading>
 			</div>
 			<div class="main-grid">
 				<div class="col-span-10 col-start-2">

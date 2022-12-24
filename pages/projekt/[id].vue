@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<header class="fixed z-40 top-[0] left-[0] w-full">
+		<header class="fixed z-40 bottom-[0] md:bottom-auto md:top-[0] left-[0] w-full">
 			<div class="flex justify-center items-center gap-3xs group bg-white pt-2xs pb-xs">
 				<SvgArrowLeft
 					class="text-grey-robo-master w-[2rem] group-hover:-translate-x-3xs transition-transform ease-out duration-300"
