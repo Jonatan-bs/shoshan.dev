@@ -8,7 +8,8 @@ export default defineNuxtComponent({
 	},
 	setup() {
 		const { formatDate } = useFormatDate();
-		const ctx = ref<(gsap.core.Tween | gsap.core.Timeline)[]>([]);
+		const ctx = ref<gsap.Context>();
+		const main = ref();
 
 		const refAnimateFromBottom = ref<HTMLElement[] | null>(null);
 
@@ -31,21 +32,21 @@ export default defineNuxtComponent({
 				transform: "translateX(0rem)",
 			};
 			if (currentValue < oldValue && animateFromRightwrapperNextElm) {
-				ctx.value.push(
+				ctx.value = gsap.context(() => {
 					gsap.fromTo(
 						animateFromRightwrapperNextElm.querySelectorAll(":scope > *"),
 						toAnimation,
 						fromAnimation
-					)
-				);
+					);
+				}, main.value);
 			} else if (currentValue > oldValue && animateFromRightwrapper) {
-				ctx.value.push(
+				ctx.value = gsap.context(() => {
 					gsap.fromTo(
 						animateFromRightwrapper.querySelectorAll(":scope > *"),
 						fromAnimation,
 						toAnimation
-					)
-				);
+					);
+				}, main.value);
 			}
 		});
 
@@ -59,13 +60,14 @@ export default defineNuxtComponent({
 				});
 
 			// Animate line
-			if (refLineWrapper.value) {
-				refLineWrapper.value.forEach((lineWrapper) => {
-					ctx.value.push(
-						gsap
-							.timeline({
+			setTimeout(() => {
+				ctx.value = gsap.context(() => {
+					if (refLineWrapper.value) {
+						refLineWrapper.value.forEach((lineWrapper) => {
+							gsap.timeline({
 								defaults: { duration: 1 },
 								scrollTrigger: {
+									markers: true,
 									trigger: lineWrapper,
 									scrub: 1,
 									start: "top 60%",
@@ -85,8 +87,7 @@ export default defineNuxtComponent({
 											activeGlowBallIndexes.value--;
 									},
 								},
-							})
-							.fromTo(
+							}).fromTo(
 								lineWrapper.querySelectorAll("svg"),
 								{
 									height: "0%",
@@ -94,15 +95,14 @@ export default defineNuxtComponent({
 								{
 									height: "100%",
 								}
-							)
-					);
+							);
+						});
+					}
 				});
-			}
+			}, 700);
 		});
 		onUnmounted(() => {
-			ctx.value.forEach((tl) => {
-				tl.revert();
-			});
+			if (ctx.value) ctx.value.revert();
 		});
 		return {
 			refLineWrapper,
