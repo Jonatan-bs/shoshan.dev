@@ -14,11 +14,11 @@ export default defineComponent({
 			});
 		}
 		const navItems = [
-			{ title: "teknologier", to: "/#teknologier" },
-			{ title: "portfolio", to: "/#projekter" },
-			{ title: "om mig", to: "/#om-mig" },
-			{ title: "tidslinje", to: "/#tidslinje" },
-			{ title: "kontakt", to: "/#kontakt" },
+			{ title: "teknologier", to: "#teknologier" },
+			{ title: "projekter", to: "#projekter" },
+			{ title: "om mig", to: "#om-mig" },
+			{ title: "tidslinje", to: "#tidslinje" },
+			{ title: "kontakt", to: "#kontakt" },
 		];
 		return {
 			refHashElm,

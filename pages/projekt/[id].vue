@@ -11,7 +11,7 @@
 			</div>
 		</header>
 		<section
-			class="mt-lg mb-3xl md:mb-auto md:mt-auto md:h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center"
+			class="mt-xs md:mt-lg mb-3xl md:mb-auto md:mt-auto md:h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center"
 		>
 			<div class="rounded-bl-lg h-[40rem] md:h-[50rem] w-full bg-blue-cornflower relative">
 				<div ref="refHeroImage">
@@ -34,7 +34,7 @@
 			</div>
 		</section>
 		<main class="mt-md">
-			<div class="container">
+			<div class="container mb-xl">
 				<OrganismBlockRouter :content-area-collection="data.contentAreaCollection" />
 			</div>
 		</main>

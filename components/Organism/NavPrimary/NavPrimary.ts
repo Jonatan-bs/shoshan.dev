@@ -18,12 +18,12 @@ export default defineNuxtComponent({
 		});
 		const setActiveIndexByValue = (value: string) => {
 			tempDeactiveateHashSetter();
-			activeValue.value = value.replace("/", "");
+			activeValue.value = value;
 		};
 		const animateSelectedLine = () => {
 			if (navItem.value && selectedLine.value) {
 				const activeItemIndex = props.items.findIndex(
-					(item) => item.to === "/" + activeValue.value
+					(item) => item.to === activeValue.value
 				);
 				if (activeItemIndex === -1) return;
 

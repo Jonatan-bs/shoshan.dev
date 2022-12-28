@@ -67,7 +67,6 @@ export default defineNuxtComponent({
 							gsap.timeline({
 								defaults: { duration: 1 },
 								scrollTrigger: {
-									markers: true,
 									trigger: lineWrapper,
 									scrub: 1,
 									start: "top 60%",
