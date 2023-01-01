@@ -27,7 +27,6 @@ export const useHashSetter = (deactivated = false) => {
 					if (tempDeactivated.value) return;
 					const hash = "#" + entry.target.id.replace(" ", "-").toLowerCase();
 					emitter.emit("hashChanged", hash);
-					history.pushState({}, "", hash);
 				}
 			});
 		};
