@@ -1,4 +1,5 @@
 import emitter from "tiny-emitter/instance";
+import gsap from "gsap";
 export default defineNuxtComponent({
 	name: "NavPrimary",
 	props: {
@@ -16,9 +17,14 @@ export default defineNuxtComponent({
 		emitter.on("hashChanged", (hash: string) => {
 			activeValue.value = hash;
 		});
-		const setActiveIndexByValue = (value: string) => {
+		const scrollTo = (value: string) => {
 			tempDeactiveateHashSetter();
 			activeValue.value = value;
+			gsap.to(window, {
+				duration: 0.5,
+				scrollTo: { y: value, offsetY: 57 },
+				overwrite: "auto",
+			});
 		};
 		const animateSelectedLine = () => {
 			if (navItem.value && selectedLine.value) {
@@ -48,6 +54,6 @@ export default defineNuxtComponent({
 			window.removeEventListener("resize", animateSelectedLine);
 		});
 
-		return { selectedLine, activeValue, navItem, setActiveIndexByValue };
+		return { selectedLine, activeValue, navItem, scrollTo };
 	},
 });

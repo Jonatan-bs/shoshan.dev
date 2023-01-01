@@ -10,7 +10,7 @@
 			<div
 				:id="(setHashIds && item && createId(item.title)) || undefined"
 				ref="refHashElm"
-				class="mb-md scroll-mt-lg"
+				class="mb-md"
 			>
 				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
 					item.title
@@ -40,7 +40,7 @@
 			<div
 				:id="(setHashIds && item && createId(item.title)) || undefined"
 				ref="refHashElm"
-				class="mb-md scroll-mt-lg"
+				class="mb-md"
 			>
 				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
 					item.title
@@ -82,7 +82,7 @@
 			<div
 				:id="(setHashIds && item && createId(item.title)) || undefined"
 				ref="refHashElm"
-				class="mb-md scroll-mt-lg"
+				class="mb-md"
 			>
 				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
 					item.title
@@ -122,7 +122,7 @@
 			<div
 				:id="(setHashIds && item && createId(item.title)) || undefined"
 				ref="refHashElm"
-				class="mb-md scroll-mt-lg"
+				class="mb-md"
 			>
 				<AtomTextHeading tag="h2" type="SECTION" class="text-center sm:text-left">{{
 					item.title
