@@ -53,7 +53,7 @@
 					:key="index"
 					class="col-span-12 sm:col-span-6 lg:col-span-4 w-full md:mb-auto mb-md group"
 				>
-					<NuxtLink :to="'/projekt/' + project.id">
+					<NuxtLink :to="'/projekt/' + project.slug">
 						<article>
 							<AtomBaseCard :is-wide="true" class="mb-xs">
 								<nuxt-img

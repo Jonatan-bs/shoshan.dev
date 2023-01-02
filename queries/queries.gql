@@ -13,29 +13,31 @@ query pageHome {
 		}
 	}
 }
-query pageProject($id: String!) {
-	project(id: $id) {
-		title
-		solutions
-		headerImage {
-			...contentfullImage
-		}
-		seo {
-			slug
-			description
-			image {
+query pageProject($slug: String!) {
+	projectCollection(where: { seo: { slug: $slug } }, limit: 1) {
+		items {
+			title
+			solutions
+			headerImage {
 				...contentfullImage
 			}
-		}
-		headerImage {
-			...contentfullImage
-		}
-		contentAreaCollection(limit: 40) {
-			items {
-				...blockAbout
-				...blockImage
-				...blockProjectsSection
-				...blockServices
+			seo {
+				slug
+				description
+				image {
+					...contentfullImage
+				}
+			}
+			headerImage {
+				...contentfullImage
+			}
+			contentAreaCollection(limit: 40) {
+				items {
+					...blockAbout
+					...blockImage
+					...blockProjectsSection
+					...blockServices
+				}
 			}
 		}
 	}

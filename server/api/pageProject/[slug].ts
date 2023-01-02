@@ -7,15 +7,15 @@ import { useMapApiData } from "~~/composables/useMapApiData";
 import { useTools } from "~~/composables/useTools";
 
 export default defineEventHandler(async (event): Promise<IResponseModel<IPageProject>> => {
-	let data: PageProjectQuery["project"] = null;
-	const id = event.context.params.id;
+	let data: NonNullable<PageProjectQuery["projectCollection"]>["items"][0] = null;
+	const slug = event.context.params.slug;
 	const { MAPContentAreaCollection } = useMapApiData();
 	const { notEmpty } = useTools();
 
 	const { cmsClient } = useCmsClient();
 	try {
-		const response = await cmsClient.request(PageProjectDocument, { id });
-		data = response.project || null;
+		const response = await cmsClient.request(PageProjectDocument, { slug });
+		data = response.projectCollection?.items[0] || null;
 	} catch (err: any) {
 		return {
 			success: false,

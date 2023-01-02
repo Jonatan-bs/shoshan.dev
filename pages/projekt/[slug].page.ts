@@ -26,7 +26,7 @@ export default defineComponent({
 			meta: () => [{ name: "description", content: pageData.value?.seo.description }],
 		});
 
-		const { data } = await useFetch(`/api/pageProject/${params.id}`);
+		const { data } = await useFetch(`/api/pageProject/${params.slug}`);
 		if (!data.value?.success || !data.value?.data) {
 			throw createError({
 				statusCode: data.value?.status || 500,
@@ -37,7 +37,7 @@ export default defineComponent({
 		pageData.value = data.value?.data;
 
 		return {
-			data: pageData.value,
+			pageData: pageData.value!,
 			formatDate,
 			refHeroImage,
 		};
