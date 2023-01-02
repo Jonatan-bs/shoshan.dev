@@ -1,11 +1,13 @@
 import gsap from "gsap";
+import { IPageProject } from "~~/declarations/pages";
 export default defineComponent({
 	name: "ProjectDetails",
 	setup: async () => {
 		const { formatDate } = useFormatDate();
 		const { params } = useRoute();
-
+		const pageData = ref<IPageProject>();
 		const refHeroImage = ref<HTMLElement>();
+
 		onMounted(() => {
 			if (refHeroImage.value) {
 				gsap.from(refHeroImage.value, {
@@ -15,7 +17,16 @@ export default defineComponent({
 				});
 			}
 		});
-		const { data } = await useAsyncData(() => $fetch(`/api/pageProject/${params.id}`));
+
+		useHead({
+			title: () =>
+				pageData.value?.title
+					? pageData.value?.title + " | Jonatan Shoshan"
+					: "Jonatan Shoshan - Webspecialist",
+			meta: () => [{ name: "description", content: pageData.value?.seo.description }],
+		});
+
+		const { data } = await useFetch(`/api/pageProject/${params.id}`);
 		if (!data.value?.success || !data.value?.data) {
 			throw createError({
 				statusCode: data.value?.status || 500,
@@ -23,14 +34,10 @@ export default defineComponent({
 					data.value?.status === 404 ? "Page Not Found" : "Something went wrong",
 			});
 		}
-
-		// useHead({
-		// 	title: data.value.data.title + "| Jonatan Shoshan",
-		// 	meta: [{ name: "description", content: data.value.data.seo.description }],
-		// });
+		pageData.value = data.value?.data;
 
 		return {
-			data: data.value.data,
+			data: pageData.value,
 			formatDate,
 			refHeroImage,
 		};

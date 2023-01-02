@@ -6,7 +6,7 @@ import { useCmsClient } from "~~/composables/cmsClient";
 import { useMapApiData } from "~~/composables/useMapApiData";
 import { useTools } from "~~/composables/useTools";
 
-export default defineEventHandler(async (event): Promise<IResponseModel<null | IPageProject>> => {
+export default defineEventHandler(async (event): Promise<IResponseModel<IPageProject>> => {
 	let data: PageProjectQuery["project"] = null;
 	const id = event.context.params.id;
 	const { MAPContentAreaCollection } = useMapApiData();
