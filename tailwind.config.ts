@@ -2,6 +2,9 @@ import plugin from "tailwindcss/plugin";
 
 module.exports = {
 	mode: "jit",
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 	theme: {
 		extend: {
 			keyframes: {

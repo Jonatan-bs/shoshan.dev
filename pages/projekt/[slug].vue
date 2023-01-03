@@ -1,17 +1,17 @@
 <template>
 	<div class="container">
-		<header class="fixed z-40 bottom-[0] md:bottom-auto md:top-[0] left-[0] w-full">
-			<div class="flex justify-center items-center gap-3xs group bg-white pt-2xs pb-xs">
-				<SvgArrowLeft
-					class="text-grey-robo-master w-[2rem] group-hover:-translate-x-3xs transition-transform ease-out duration-300"
-				/>
-				<NuxtLink to="/">
+		<header class="fixed z-40 top-[0] left-[0] w-full">
+			<div class="bg-white pt-2xs pb-xs">
+				<NuxtLink to="/" class="flex justify-center items-center gap-3xs group">
+					<SvgArrowLeft
+						class="text-grey-robo-master w-[2rem] group-hover:-translate-x-3xs transition-transform ease-out duration-300"
+					/>
 					<AtomTextNav class="capitalize"> tilbage til forsiden </AtomTextNav>
 				</NuxtLink>
 			</div>
 		</header>
 		<section
-			class="mt-xs md:mt-lg mb-3xl md:mb-auto md:mt-auto md:h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center"
+			class="mt-lg mb-xl md:mb-3xl md:mb-auto md:h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center"
 		>
 			<div class="rounded-bl-lg h-[40rem] md:h-[50rem] w-full bg-blue-cornflower relative">
 				<div ref="refHeroImage">

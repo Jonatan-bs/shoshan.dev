@@ -3,7 +3,10 @@
 	<section
 		v-for="(item, index) in contentAreaCollection"
 		:key="index"
-		:class="index !== (contentAreaCollection && contentAreaCollection.length - 1) && 'mb-3xl'"
+		:class="
+			index !== (contentAreaCollection && contentAreaCollection.length - 1) &&
+			'md:mb-3xl mb-xl'
+		"
 	>
 		<!-- TEKNOLOGIER -->
 		<template v-if="item && item.__typename === 'BlockServices'">
@@ -24,13 +27,16 @@
 					class="col-span-6 sm:col-span-4 lg:col-span-2"
 				>
 					<AtomBaseCard :has-padding="true">
-						<nuxt-img
-							:src="image.url"
-							:alt="image.alt"
-							class="w-full h-full object-contain"
-							provider="contentful"
-							width="250"
-						/>
+						<div class="w-full h-full object-contain">
+							<nuxt-img
+								:src="image.url"
+								:alt="image.alt"
+								class="w-full object-contain aspect-1"
+								provider="contentful"
+								width="250"
+								height="250"
+							/>
+						</div>
 					</AtomBaseCard>
 				</div>
 			</div>
@@ -64,9 +70,9 @@
 									width="400"
 								/>
 							</AtomBaseCard>
-							<AtomTextHeading tag="h3" type="H2">
-								{{ project?.title }}</AtomTextHeading
-							>
+							<AtomTextHeading tag="h3" type="H2">{{
+								project?.title
+							}}</AtomTextHeading>
 
 							<MoleculeBaseList
 								v-if="project?.solutions"

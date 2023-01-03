@@ -10,7 +10,7 @@ export const useAnimation = () => {
 				stagger: 0.15,
 				translateY: "5rem",
 				scrollTrigger: {
-					start: "top center",
+					start: "top 80%",
 					trigger: scrollTriggerElm,
 					toggleActions: "play none none reverse",
 				},

@@ -68,7 +68,7 @@ export default defineNuxtComponent({
 								defaults: { duration: 1 },
 								scrollTrigger: {
 									trigger: lineWrapper,
-									scrub: 1,
+									scrub: 0,
 									start: "top 60%",
 									end: "bottom 60%",
 									onEnter: () => {
@@ -92,6 +92,7 @@ export default defineNuxtComponent({
 									height: "0%",
 								},
 								{
+									ease: "linear",
 									height: "100%",
 								}
 							);

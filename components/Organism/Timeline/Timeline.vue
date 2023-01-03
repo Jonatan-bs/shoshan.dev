@@ -8,7 +8,7 @@
 					{{ entry.overwriteToDateWithNow ? "Nu" : formatDate(entry.toDate) }}
 				</AtomTextBase>
 			</div>
-			<!-- Ball start -->
+			<!-- Ball and line start -->
 			<div class="flex flex-col items-center">
 				<MoleculeGlowBall :is-active="activeGlowBallIndexes >= index">
 					<nuxt-img
@@ -30,7 +30,11 @@
 						/>
 					</svg>
 					<div ref="refLineWrapper" class="absolute inset-[0]">
-						<svg height="100%" width="1rem" class="absolute inset-[0] blur-sm">
+						<svg
+							height="0"
+							width="1rem"
+							class="absolute inset-[0] blur-sm hidden sm:block"
+						>
 							<line
 								x1="2.5"
 								y1="0"
@@ -39,7 +43,7 @@
 								class="stroke-5 stroke-blue-cornflower"
 							/>
 						</svg>
-						<svg height="100%" width="1rem" class="absolute inset-[0]">
+						<svg height="0" width="1rem" class="absolute inset-[0]">
 							<line
 								x1="2.5"
 								y1="0"
@@ -51,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Ball end -->
+			<!-- Ball and line end -->
 			<div class="pl-2xs md:pl-sm mt-[2rem] md:mt-[4rem]">
 				<div ref="refAnimateFromBottom">
 					<AtomTextBase class="md:hidden block mb-2xs">
