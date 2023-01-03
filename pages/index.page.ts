@@ -3,6 +3,7 @@ export default defineComponent({
 	setup: async () => {
 		const { formatDate } = useFormatDate();
 		const { refHashElm, tempDeactiveateHashSetter } = useHashSetter();
+		const modalContactIsActive = ref(false);
 
 		const { data } = await useAsyncData(() => $fetch("/api/pageHome"));
 		if (!data.value?.success || !data.value?.data) {
@@ -21,6 +22,7 @@ export default defineComponent({
 			{ title: "kontakt", to: "#kontakt" },
 		];
 		return {
+			modalContactIsActive,
 			refHashElm,
 			navItems,
 			data: data.value.data,

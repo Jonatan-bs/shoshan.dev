@@ -36,6 +36,8 @@
 		"typescript": "^4.9.4"
 	},
 	"dependencies": {
+		"@vueuse/integrations": "^9.9.0",
+		"focus-trap": "^7.2.0",
 		"graphql-request": "^5.0.0",
 		"gsap": "^3.11.3",
 		"moment": "^2.29.4",

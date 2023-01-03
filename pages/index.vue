@@ -20,7 +20,24 @@
 		</main>
 		<div id="kontakt" ref="refHashElm"></div>
 		<section class="flex items-center justify-center h-screen w-screen">
-			<AtomTextHeading tag="h2" type="SECTION">- KONTAKT -</AtomTextHeading>
+			<button
+				@click="modalContactIsActive = true"
+				@keydown.enter="modalContactIsActive = true"
+			>
+				<AtomTextHeading tag="h2" type="SECTION">- KONTAKT -</AtomTextHeading>
+			</button>
+			<OrganismModal v-model:is-active="modalContactIsActive" title="Kontakt Info">
+				<ul>
+					<li class="pb-xs">
+						<AtomTextBase class="text-black-lacquer"> Email: </AtomTextBase>
+						<AtomTextBase class="text-black-lacquer"> Jonatan-bs@live.dk </AtomTextBase>
+					</li>
+					<li>
+						<AtomTextBase class="text-black-lacquer"> Tlf.: </AtomTextBase>
+						<AtomTextBase class="text-black-lacquer"> 60 54 55 54 </AtomTextBase>
+					</li>
+				</ul>
+			</OrganismModal>
 		</section>
 	</div>
 </template>

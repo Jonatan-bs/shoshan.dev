@@ -50,6 +50,7 @@ module.exports = {
 			white: "#FFFFFF",
 
 			// BLACKS
+			black: "#000000",
 			"black-lacquer": "#403E3E",
 
 			// BLUE
