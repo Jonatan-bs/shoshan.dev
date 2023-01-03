@@ -8,7 +8,7 @@ export default defineNuxtComponent({
 	setup(props, { emit }) {
 		const refModal = ref<HTMLElement>();
 
-		const { activate, deactivate, hasFocus } = useFocusTrap(refModal);
+		const { activate, deactivate } = useFocusTrap(refModal);
 
 		const closeModalOnEscape = (e: KeyboardEvent) => {
 			e.key === "Escape" ? emit("update:isActive", false) : "";

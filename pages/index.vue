@@ -7,10 +7,27 @@
 			</div>
 		</header>
 
-		<section class="h-screen w-full flex items-center justify-center">
-			<OrganismLogo />
+		<section
+			class="min-h-screen w-full flex flex-col-reverse md:flex-row items-center justify-center bg-grey-cascading-white"
+		>
+			<div class="md:w-1/2 p-sm flex justify-end">
+				<NuxtImg
+					src="https://media0.giphy.com/media/wX5Ga4QAlV1f3DXBXR/giphy.gif?cid=ecf05e47iukhijklbgtygno2tufe912hnm8m8udk9ada9osn&rid=giphy.gif&ct=gl"
+					class="max-w-[50rem] w-full"
+				/>
+			</div>
+			<div class="md:w-1/2 p-sm">
+				<h1
+					class="md:text-left text-center text-md md:text-xl font-bold capitalize mt-[1.5vw] lg:mt-2xs text-black-lacquer leading-none"
+				>
+					jonatan shoshan
+				</h1>
+				<AtomTextSubheading class="mt-2xs md:text-left text-center">
+					&lt; webspecialist >
+				</AtomTextSubheading>
+			</div>
 		</section>
-		<main class="mt-md">
+		<main class="mt-xl">
 			<div class="container">
 				<OrganismBlockRouter
 					:set-hash-ids="true"

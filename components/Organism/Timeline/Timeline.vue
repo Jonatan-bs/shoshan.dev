@@ -62,7 +62,7 @@
 						{{ formatDate(entry.fromDate) }} -
 						{{ entry.overwriteToDateWithNow ? "Nu" : formatDate(entry.toDate) }}
 					</AtomTextBase>
-					<AtomTextHeading type="H1" class="mb-3xs">
+					<AtomTextHeading type="H1" class="md:mb-3xs">
 						{{ entry.title }}
 					</AtomTextHeading>
 					<AtomTextSubheading size="SMALL" color="DEFAULT" class="mb-xs">

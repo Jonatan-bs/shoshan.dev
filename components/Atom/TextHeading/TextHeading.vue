@@ -4,7 +4,8 @@
 		<component
 			:is="tag"
 			v-if="type === 'SECTION'"
-			class="uppercase text-black-lacquer font-light text-base tracking-wide"
+			class="uppercase font-light text-base tracking-wide"
+			:class="[color ?? 'text-black-lacquer', size ?? 'text-base']"
 		>
 			<slot />
 		</component>
@@ -12,6 +13,7 @@
 			:is="tag"
 			v-if="type === 'H1'"
 			class="text-black-lacquer font-black text-lg md:text-xl"
+			:class="[color ?? 'text-black-lacquer', size ?? 'text-lg md:text-xl']"
 		>
 			<slot />
 		</component>
@@ -19,7 +21,8 @@
 		<component
 			:is="tag"
 			v-if="type === 'H2'"
-			class="text-black-lacquer font-bold text-md md:text-lg"
+			class="font-bold text-md md:text-lg"
+			:class="[color ?? 'text-black-lacquer', size ?? 'text-md md:text-lg']"
 		>
 			<slot />
 		</component>
