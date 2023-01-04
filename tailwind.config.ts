@@ -98,6 +98,7 @@ module.exports = {
 			none: "0",
 			sm: "1.6rem",
 			lg: "15.5rem",
+			full: "999rem",
 		},
 		aspectRatio: {
 			"1": "1",

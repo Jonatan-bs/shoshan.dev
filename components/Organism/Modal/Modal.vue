@@ -10,7 +10,7 @@
 				@keydown.enter="$emit('update:isActive', false)"
 			>
 				<div
-					class="organism-modal__content bg-white p-sm rounded-sm max-w-[70rem] m-2xs w-full relative"
+					class="organism-modal__content bg-white p-sm rounded-bl-sm rounded-tr-sm max-w-[70rem] m-2xs w-full relative"
 					@click.stop=""
 				>
 					<button class="w-[2rem] absolute top-sm right-sm">
