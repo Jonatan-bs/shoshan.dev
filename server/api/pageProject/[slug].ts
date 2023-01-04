@@ -7,7 +7,7 @@ import { useMapApiData } from "~~/composables/useMapApiData";
 import { useTools } from "~~/composables/useTools";
 
 export default defineEventHandler(async (event): Promise<IResponseModel<IPageProject>> => {
-	let data: NonNullable<PageProjectQuery["projectCollection"]>["items"][0] = null;
+	let data: NonNullable<PageProjectQuery["projectCollection"]>["items"][0];
 	const slug = event.context.params.slug;
 	const { MAPContentAreaCollection } = useMapApiData();
 	const { notEmpty } = useTools();

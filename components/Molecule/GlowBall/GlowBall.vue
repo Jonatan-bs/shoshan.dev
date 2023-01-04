@@ -11,15 +11,15 @@
 		</div>
 		<div class="absolute inset-[0] animate-rotate">
 			<span
-				class="absolute inset-[0] rounded-[50%] bg-gradient-to-r from-[#00b2ff] via-[#00ffbb] to-[#6bff6b] blur-[.5rem] transition-[inset] opacity-1 ease-out duration-300"
+				class="absolute inset-[0] rounded-[50%] bg-gradient-to-r from-blue-neon via-blue-green-neon to-green-neon blur-[.5rem] transition-[inset] opacity-1 ease-out duration-300"
 				:class="!isActive && 'inset-[5rem]'"
 			></span>
 			<span
-				class="absolute inset-[0] rounded-[50%] bg-gradient-to-r from-[#00b2ff] via-[#00ffbb] to-[#6bff6b] blur-[1rem] transition-[inset] opacity-1 ease-out duration-300"
+				class="absolute inset-[0] rounded-[50%] bg-gradient-to-r from-blue-neon via-blue-green-neon to-green-neon blur-[1rem] transition-[inset] opacity-1 ease-out duration-300"
 				:class="!isActive && 'inset-[5rem]'"
 			></span>
 			<span
-				class="absolute inset-[0] rounded-[50%] bg-gradient-to-r from-[#00b2ff] via-[#00ffbb] to-[#6bff6b] transition-[inset] opacity-1 ease-out duration-300"
+				class="absolute inset-[0] rounded-[50%] bg-gradient-to-r from-blue-neon via-blue-green-neon to-green-neon transition-[inset] opacity-1 ease-out duration-300"
 				:class="!isActive && 'inset-[5rem]'"
 			></span>
 		</div>

@@ -55,6 +55,11 @@ module.exports = {
 
 			// BLUE
 			"blue-cornflower": "#162434",
+			"blue-neon": "#00b2ff",
+			"blue-green-neon": "#00ffbb",
+
+			// GREEN
+			"green-neon": "#6bff6b",
 
 			// GREYS
 			"grey-cascading-white": "#F6F6F6",

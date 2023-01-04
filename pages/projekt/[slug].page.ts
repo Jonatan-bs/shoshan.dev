@@ -37,7 +37,7 @@ export default defineComponent({
 		pageData.value = data.value?.data;
 
 		return {
-			pageData: pageData.value!,
+			pageData: pageData.value,
 			formatDate,
 			refHeroImage,
 		};

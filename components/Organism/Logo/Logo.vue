@@ -15,7 +15,7 @@
 			class="uppercase font-light mt-2xs"
 			size="text-[3vw] lg:text-base"
 		>
-			- webspecialist -
+			&lt; webspecialist />
 		</AtomTextHeading>
 	</div>
 </template>
