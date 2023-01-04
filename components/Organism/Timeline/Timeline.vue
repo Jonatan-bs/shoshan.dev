@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<!-- Ball and line end -->
-			<div class="pl-2xs md:pl-sm mt-[2rem] md:mt-[4rem]">
+			<div class="pl-2xs md:pl-sm mb-lg mt-[2rem] md:mt-[4rem]">
 				<div ref="refAnimateFromBottom">
 					<AtomTextBase class="md:hidden block mb-2xs">
 						{{ formatDate(entry.fromDate) }} -
@@ -69,9 +69,7 @@
 						{{ entry.subHeading }}
 					</AtomTextSubheading>
 
-					<AtomTextBase class="mb-xl">
-						{{ entry.description }}
-					</AtomTextBase>
+					<MoleculeMarkdown :value="entry.description" />
 				</div>
 			</div>
 		</div>

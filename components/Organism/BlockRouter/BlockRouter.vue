@@ -116,9 +116,7 @@
 						</AtomTextSubheading>
 					</div>
 					<div ref="refAboutSectionText">
-						<AtomTextBase>
-							{{ item.about }}
-						</AtomTextBase>
+						<MoleculeMarkdown :value="item.about" />
 					</div>
 				</div>
 			</div>

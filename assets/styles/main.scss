@@ -3,6 +3,21 @@ html {
 	font-size: 62.5%;
 }
 
+.markdown {
+	@apply whitespace-pre-wrap;
+	p {
+		@apply text-grey-robo-master font-normal text-sm md:text-base;
+	}
+
+	li {
+		@apply relative ml-[2rem] before:content-[''] before:absolute before:top-[1.1rem] before:rounded-full before:left-[-2rem] before:w-[1rem] before:h-[1rem] before:bg-blue-neon;
+	}
+
+	strong {
+		@apply text-black-lacquer font-bold;
+	}
+}
+
 // PAGE TRANSITIONS
 .page-enter-active > *,
 .page-leave-active > *,
