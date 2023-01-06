@@ -7,8 +7,6 @@ export default defineComponent({
 	setup: async () => {
 		gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 		const { setGlobalData } = useGlobalData();
-		setTimeout(() => {
-			setGlobalData();
-		});
+		setGlobalData();
 	},
 });

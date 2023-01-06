@@ -6,7 +6,7 @@ export const useSetHeader = (data?: {
 	const { seoTitleTemplate, seoDescription, seoImage, seoTitle } = useGlobalData();
 
 	const title = computed(() =>
-		data?.titleChunk ? data.titleChunk + seoTitleTemplate.value : seoTitle.value || ""
+		data?.titleChunk ? data.titleChunk + seoTitleTemplate.value || "" : seoTitle.value || ""
 	);
 
 	const description = computed(() => data?.description || seoDescription.value || "");
