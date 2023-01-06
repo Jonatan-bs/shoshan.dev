@@ -109,7 +109,7 @@ export const useMapApiData = () => {
 					return {
 						description: blockTimeline.description || "",
 						fromDate: (blockTimeline.fromDate as string) || "",
-						toDate: (blockTimeline.fromDate as string) || "",
+						toDate: (blockTimeline.toDate as string) || "",
 						title: blockTimeline.title || "",
 						image: {
 							alt: blockTimeline.image!.description || "",

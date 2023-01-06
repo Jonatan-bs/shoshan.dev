@@ -6,6 +6,7 @@ export default defineComponent({
 		const { formatDate } = useFormatDate();
 		const { params } = useRoute();
 		const pageData = ref<IPageProject>();
+		const titleChunk = ref<string>();
 		const refHeroImage = ref<HTMLElement>();
 
 		onMounted(() => {
@@ -18,23 +19,25 @@ export default defineComponent({
 			}
 		});
 
-		useHead({
-			title: () =>
-				pageData.value?.title
-					? pageData.value?.title + " | Jonatan Shoshan"
-					: "Jonatan Shoshan - Webspecialist",
-			meta: () => [{ name: "description", content: pageData.value?.seo.description }],
+		watch(pageData, () => {
+			useSetHeader({
+				description: pageData.value?.seo.description,
+				imageUrl: pageData.value?.seo.image.url,
+				titleChunk: pageData.value?.title,
+			});
 		});
 
 		const { data } = await useFetch(`/api/pageProject/${params.slug}`);
-		if (!data.value?.success || !data.value?.data) {
+		if (!data.value || !data.value?.success || !data.value?.data) {
 			throw createError({
 				statusCode: data.value?.status || 500,
 				statusMessage:
 					data.value?.status === 404 ? "Page Not Found" : "Something went wrong",
 			});
 		}
+
 		pageData.value = data.value?.data;
+		titleChunk.value = pageData.value?.title;
 
 		return {
 			pageData: pageData.value,

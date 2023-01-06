@@ -95,6 +95,7 @@ type AssetLinkingCollections {
   blockServicesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): BlockServicesCollection
   elmTimelineCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ElmTimelineCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  globalCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): GlobalCollection
   projectCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProjectCollection
   servicesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ServicesCollection
   sharedSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SharedSeoCollection
@@ -580,6 +581,74 @@ enum EntryOrder {
   sys_publishedVersion_DESC
 }
 
+"""
+[See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global)
+"""
+type Global implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): GlobalLinkingCollections
+  seoDescription(locale: String): String
+  seoImage(locale: String, preview: Boolean): Asset
+  seoTitle(locale: String): String
+  seoTitleTemplate(locale: String): String
+  sys: Sys!
+}
+
+type GlobalCollection {
+  items: [Global]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input GlobalFilter {
+  AND: [GlobalFilter]
+  OR: [GlobalFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  seoDescription: String
+  seoDescription_contains: String
+  seoDescription_exists: Boolean
+  seoDescription_in: [String]
+  seoDescription_not: String
+  seoDescription_not_contains: String
+  seoDescription_not_in: [String]
+  seoImage_exists: Boolean
+  seoTitle: String
+  seoTitleTemplate: String
+  seoTitleTemplate_contains: String
+  seoTitleTemplate_exists: Boolean
+  seoTitleTemplate_in: [String]
+  seoTitleTemplate_not: String
+  seoTitleTemplate_not_contains: String
+  seoTitleTemplate_not_in: [String]
+  seoTitle_contains: String
+  seoTitle_exists: Boolean
+  seoTitle_in: [String]
+  seoTitle_not: String
+  seoTitle_not_contains: String
+  seoTitle_not_in: [String]
+  sys: SysFilter
+}
+
+type GlobalLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum GlobalOrder {
+  seoTitleTemplate_ASC
+  seoTitleTemplate_DESC
+  seoTitle_ASC
+  seoTitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
 scalar HexColor
 
@@ -856,6 +925,8 @@ type Query {
   elmTimeline(id: String!, locale: String, preview: Boolean): ElmTimeline
   elmTimelineCollection(limit: Int = 100, locale: String, order: [ElmTimelineOrder], preview: Boolean, skip: Int = 0, where: ElmTimelineFilter): ElmTimelineCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  global(id: String!, locale: String, preview: Boolean): Global
+  globalCollection(limit: Int = 100, locale: String, order: [GlobalOrder], preview: Boolean, skip: Int = 0, where: GlobalFilter): GlobalCollection
   pageHome(id: String!, locale: String, preview: Boolean): PageHome
   pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
   project(id: String!, locale: String, preview: Boolean): Project

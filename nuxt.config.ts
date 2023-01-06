@@ -34,10 +34,6 @@ export default defineNuxtConfig({
 		pageTransition: { name: "page", mode: "out-in" },
 
 		head: {
-			title: "Jonatan Shoshan - Webspecialist",
-			meta: [
-				// { name: "description", content: "My amazing site." },
-			],
 			link: [
 				{
 					rel: "preconnect",

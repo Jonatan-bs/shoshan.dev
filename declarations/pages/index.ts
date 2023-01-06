@@ -15,3 +15,9 @@ export declare interface IPageProject {
 	};
 	headerImage: IImage;
 }
+export declare interface IGlobal {
+	seoTitleTemplate: string;
+	seoTitle: string;
+	seoDescription: string;
+	seoImage: IImage;
+}

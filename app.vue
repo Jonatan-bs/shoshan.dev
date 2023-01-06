@@ -1,9 +1,5 @@
-<script setup>
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-</script>
+<script src="./app.main.ts" lang="ts" />
+
 <template>
 	<NuxtLayout>
 		<NuxtPage />

@@ -172,6 +172,7 @@ export type AssetLinkingCollections = {
   blockServicesCollection?: Maybe<BlockServicesCollection>;
   elmTimelineCollection?: Maybe<ElmTimelineCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  globalCollection?: Maybe<GlobalCollection>;
   projectCollection?: Maybe<ProjectCollection>;
   servicesCollection?: Maybe<ServicesCollection>;
   sharedSeoCollection?: Maybe<SharedSeoCollection>;
@@ -211,6 +212,14 @@ export type AssetLinkingCollectionsElmTimelineCollectionArgs = {
 
 
 export type AssetLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsGlobalCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -1009,6 +1018,114 @@ export enum EntryOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+/** [See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global) */
+export type Global = Entry & {
+  __typename?: 'Global';
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<GlobalLinkingCollections>;
+  seoDescription?: Maybe<Scalars['String']>;
+  seoImage?: Maybe<Asset>;
+  seoTitle?: Maybe<Scalars['String']>;
+  seoTitleTemplate?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global) */
+export type GlobalLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global) */
+export type GlobalSeoDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global) */
+export type GlobalSeoImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global) */
+export type GlobalSeoTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/fyc30pkhu1hr/content_types/global) */
+export type GlobalSeoTitleTemplateArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type GlobalCollection = {
+  __typename?: 'GlobalCollection';
+  items: Array<Maybe<Global>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type GlobalFilter = {
+  AND?: InputMaybe<Array<InputMaybe<GlobalFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<GlobalFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  seoDescription?: InputMaybe<Scalars['String']>;
+  seoDescription_contains?: InputMaybe<Scalars['String']>;
+  seoDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  seoDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoDescription_not?: InputMaybe<Scalars['String']>;
+  seoDescription_not_contains?: InputMaybe<Scalars['String']>;
+  seoDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoImage_exists?: InputMaybe<Scalars['Boolean']>;
+  seoTitle?: InputMaybe<Scalars['String']>;
+  seoTitleTemplate?: InputMaybe<Scalars['String']>;
+  seoTitleTemplate_contains?: InputMaybe<Scalars['String']>;
+  seoTitleTemplate_exists?: InputMaybe<Scalars['Boolean']>;
+  seoTitleTemplate_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoTitleTemplate_not?: InputMaybe<Scalars['String']>;
+  seoTitleTemplate_not_contains?: InputMaybe<Scalars['String']>;
+  seoTitleTemplate_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoTitle_contains?: InputMaybe<Scalars['String']>;
+  seoTitle_exists?: InputMaybe<Scalars['Boolean']>;
+  seoTitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoTitle_not?: InputMaybe<Scalars['String']>;
+  seoTitle_not_contains?: InputMaybe<Scalars['String']>;
+  seoTitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type GlobalLinkingCollections = {
+  __typename?: 'GlobalLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type GlobalLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum GlobalOrder {
+  SeoTitleTemplateAsc = 'seoTitleTemplate_ASC',
+  SeoTitleTemplateDesc = 'seoTitleTemplate_DESC',
+  SeoTitleAsc = 'seoTitle_ASC',
+  SeoTitleDesc = 'seoTitle_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
 export enum ImageFormat {
   Avif = 'AVIF',
   /** JPG image format. */
@@ -1343,6 +1460,8 @@ export type Query = {
   elmTimeline?: Maybe<ElmTimeline>;
   elmTimelineCollection?: Maybe<ElmTimelineCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  global?: Maybe<Global>;
+  globalCollection?: Maybe<GlobalCollection>;
   pageHome?: Maybe<PageHome>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
   project?: Maybe<Project>;
@@ -1480,6 +1599,23 @@ export type QueryEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EntryFilter>;
+};
+
+
+export type QueryGlobalArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryGlobalCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<GlobalOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GlobalFilter>;
 };
 
 
@@ -1830,6 +1966,11 @@ export type CfSharedSeoNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type GlobalQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GlobalQuery = { __typename?: 'Query', globalCollection?: { __typename?: 'GlobalCollection', items: Array<{ __typename?: 'Global', seoDescription?: string | null, seoTitle?: string | null, seoTitleTemplate?: string | null, seoImage?: { __typename?: 'Asset', contentType?: string | null, width?: number | null, description?: string | null, url?: string | null, title?: string | null, size?: number | null, height?: number | null } | null } | null> } | null };
+
 export type PageHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1860,5 +2001,6 @@ export const BlockImageFragmentDoc = {"kind":"Document","definitions":[{"kind":"
 export const BlockProjectsSectionFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"blockProjectsSection"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlockProjectsSection"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectsCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"3"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"teaserImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"solutions"}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"Field","name":{"kind":"Name","value":"sys"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<BlockProjectsSectionFragment, unknown>;
 export const BlockServicesFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"blockServices"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlockServices"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"imageCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"40"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<BlockServicesFragment, unknown>;
 export const BlockTimelineFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"blockTimeline"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BlockTimeline"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enitriesCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"40"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"fromDate"}},{"kind":"Field","name":{"kind":"Name","value":"toDate"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"overwriteToDateWithNow"}},{"kind":"Field","name":{"kind":"Name","value":"subHeading"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode<BlockTimelineFragment, unknown>;
+export const GlobalDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"global"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"globalCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"seoDescription"}},{"kind":"Field","name":{"kind":"Name","value":"seoImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seoTitle"}},{"kind":"Field","name":{"kind":"Name","value":"seoTitleTemplate"}}]}}]}}]}},...ContentfullImageFragmentDoc.definitions]} as unknown as DocumentNode<GlobalQuery, GlobalQueryVariables>;
 export const PageHomeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"pageHome"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pageHomeCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contentAreaCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockAbout"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockImage"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockProjectsSection"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockServices"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockTimeline"}}]}}]}}]}}]}}]}},...BlockAboutFragmentDoc.definitions,...ContentfullImageFragmentDoc.definitions,...BlockImageFragmentDoc.definitions,...BlockProjectsSectionFragmentDoc.definitions,...BlockServicesFragmentDoc.definitions,...BlockTimelineFragmentDoc.definitions]} as unknown as DocumentNode<PageHomeQuery, PageHomeQueryVariables>;
 export const PageProjectDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"pageProject"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"seo"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"solutions"}},{"kind":"Field","name":{"kind":"Name","value":"headerImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"seo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"headerImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"contentfullImage"}}]}},{"kind":"Field","name":{"kind":"Name","value":"contentAreaCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"40"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockAbout"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockImage"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockProjectsSection"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"blockServices"}}]}}]}}]}}]}}]}},...ContentfullImageFragmentDoc.definitions,...BlockAboutFragmentDoc.definitions,...BlockImageFragmentDoc.definitions,...BlockProjectsSectionFragmentDoc.definitions,...BlockServicesFragmentDoc.definitions]} as unknown as DocumentNode<PageProjectQuery, PageProjectQueryVariables>;

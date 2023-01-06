@@ -14,7 +14,7 @@
 			<div class="container">
 				<OrganismBlockRouter
 					:set-hash-ids="true"
-					:content-area-collection="data.contentAreaCollection"
+					:content-area-collection="pageData?.contentAreaCollection"
 				/>
 			</div>
 		</main>
