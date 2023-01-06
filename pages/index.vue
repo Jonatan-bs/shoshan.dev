@@ -1,15 +1,15 @@
 <script src="./index.page.ts" lang="ts" />
 <template>
 	<div>
-		<header class="fixed z-40 top-[0] left-[0] w-full">
+		<div class="fixed z-40 top-[0] left-[0] w-full">
 			<div class="flex justify-center items-center gap-3xs group bg-white">
 				<OrganismNavPrimary :items="navItems" />
 			</div>
-		</header>
+		</div>
 
-		<section class="h-screen w-full flex items-center justify-center bg-grey-cascading-white">
+		<header class="h-screen w-full flex items-center justify-center bg-grey-cascading-white">
 			<OrganismLogo />
-		</section>
+		</header>
 		<main class="mt-xl">
 			<div class="container">
 				<OrganismBlockRouter
@@ -29,7 +29,7 @@
 			<OrganismModal v-model:is-active="modalContactIsActive" title="Kontakt Info">
 				<ul>
 					<li class="pb-xs">
-						<AtomTextBase class="text-black-lacquer"> Email: </AtomTextBase>
+						<AtomTextBase class="text-blue-cornflower"> Email: </AtomTextBase>
 						<a href="mailto:jonatan-bs@live.dk"
 							><AtomTextBase class="text-black-lacquer underline underline-offset-4">
 								Jonatan-bs@live.dk

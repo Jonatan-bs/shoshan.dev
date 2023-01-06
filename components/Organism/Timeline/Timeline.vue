@@ -26,7 +26,7 @@
 							y1="0"
 							x2="2.5"
 							y2="100%"
-							class="stroke-5 stroke-grey-robo-master"
+							class="stroke-5 stroke-blue-light-house"
 						/>
 					</svg>
 					<div ref="refLineWrapper" class="absolute inset-[0]">

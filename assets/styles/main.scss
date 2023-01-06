@@ -6,7 +6,7 @@ html {
 .markdown {
 	@apply whitespace-pre-wrap;
 	p {
-		@apply text-grey-robo-master font-normal text-sm md:text-base;
+		@apply text-blue-light-house font-normal text-sm md:text-base;
 	}
 
 	li {
@@ -14,7 +14,7 @@ html {
 	}
 
 	strong {
-		@apply text-black-lacquer font-bold;
+		@apply text-blue-cornflower font-bold;
 	}
 }
 

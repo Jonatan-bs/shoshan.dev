@@ -6,8 +6,8 @@
 		:class="[
 			size === 'DEFAULT' && 'text-base md:text-lg',
 			size === 'SMALL' && 'text-sm md:text-base',
-			color === 'DEFAULT' && 'text-black-lacquer',
-			color === 'LIGHT' && 'text-grey-robo-master',
+			color === 'DEFAULT' && 'text-blue-cornflower',
+			color === 'LIGHT' && 'text-blue-light-house',
 		]"
 	>
 		<slot />

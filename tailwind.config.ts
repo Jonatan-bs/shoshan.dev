@@ -57,13 +57,13 @@ module.exports = {
 			"blue-cornflower": "#162434",
 			"blue-neon": "#00b2ff",
 			"blue-green-neon": "#00ffbb",
+			"blue-light-house": "#6e86a2",
 
 			// GREEN
 			"green-neon": "#6bff6b",
 
 			// GREYS
 			"grey-cascading-white": "#F6F6F6",
-			"grey-robo-master": "#ADADAD",
 
 			// YELLOWs
 			"yellow-energy-yellow": "#F5D653",

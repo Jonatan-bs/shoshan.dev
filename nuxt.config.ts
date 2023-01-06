@@ -34,6 +34,7 @@ export default defineNuxtConfig({
 		pageTransition: { name: "page", mode: "out-in" },
 
 		head: {
+			htmlAttrs: { lang: "da" },
 			link: [
 				{
 					rel: "preconnect",
