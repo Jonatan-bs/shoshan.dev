@@ -29,6 +29,7 @@
 					<AtomBaseCard :has-padding="true">
 						<div class="w-full h-full object-contain">
 							<nuxt-img
+								loading="lazy"
 								:src="image.url"
 								:alt="image.alt"
 								class="w-full object-contain aspect-1"
@@ -63,7 +64,9 @@
 						<article>
 							<AtomBaseCard :is-wide="true" class="mb-xs">
 								<nuxt-img
+									loading="lazy"
 									:src="project.teaserImage.url"
+									format="webp"
 									class="w-full h-full object-cover group-hover:scale-110 transition-[transform]"
 									provider="contentful"
 									:alt="project.teaserImage.alt"
@@ -98,6 +101,8 @@
 				<div class="col-span-12 md:col-span-5" ref="refAboutSectionImage">
 					<AtomBaseCard :is-wide="true">
 						<nuxt-img
+							loading="lazy"
+							format="webp"
 							:src="item.image.url"
 							class="w-full h-full object-cover"
 							provider="contentful"
@@ -143,6 +148,8 @@
 			<div ref="refImageBlockScrollTrigger" class="main-grid">
 				<div class="col-span-12" ref="refImageBlock">
 					<nuxt-img
+						loading="lazy"
+						format="webp"
 						:src="item.image.url"
 						:alt="item.image.alt"
 						class="w-full h-full object-contain"

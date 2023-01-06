@@ -12,6 +12,7 @@
 			<div class="flex flex-col items-center">
 				<MoleculeGlowBall :is-active="activeGlowBallIndexes >= index">
 					<nuxt-img
+						loading="lazy"
 						:src="entry.image.url"
 						class="w-full h-full object-contain"
 						provider="contentful"

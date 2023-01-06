@@ -19,6 +19,8 @@
 			<div class="rounded-bl-lg h-[40rem] md:h-[50rem] w-full bg-blue-cornflower relative">
 				<div ref="refHeroImage">
 					<nuxt-img
+						loading="lazy"
+						format="webp"
 						:src="pageData.headerImage.url"
 						:alt="pageData.headerImage.alt"
 						class="w-full h-[60rem] md:h-[70rem] left-[0] -top-[10rem] -bottom-3xs absolute object-contain"
