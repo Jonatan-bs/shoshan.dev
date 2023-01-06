@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="fixed z-40 top-[0] left-[0] w-full">
-			<div class="bg-white">
+			<div class="backdrop-blur-sm bg-white/80">
 				<NuxtLink
 					to="/"
 					class="flex justify-center items-center gap-3xs group pt-2xs pb-2xs"

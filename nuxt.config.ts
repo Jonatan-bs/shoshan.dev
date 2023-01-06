@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 			VITE_GQL_HOST: process.env.VITE_GQL_HOST,
 			VITE_GQL_TOKEN: process.env.VITE_GQL_TOKEN,
 			ROBOTS: process.env.ROBOTS,
+			BASE_URL: process.env.BASE_URL,
 		},
 	},
 	css: ["~/assets/styles/main.scss"],

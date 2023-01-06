@@ -26,6 +26,15 @@ query pageHome {
 		}
 	}
 }
+query projectSlugs {
+	projectCollection {
+		items {
+			seo {
+				slug
+			}
+		}
+	}
+}
 
 query pageProject($slug: String!) {
 	projectCollection(where: { seo: { slug: $slug } }, limit: 1) {

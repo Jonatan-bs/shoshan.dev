@@ -1,4 +1,5 @@
 import { GraphQLClient } from "graphql-request";
+import { useRuntimeConfig } from "#imports";
 
 export const useCmsClient = () => {
 	const runtimeConfig = useRuntimeConfig();

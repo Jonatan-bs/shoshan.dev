@@ -2,7 +2,9 @@
 <template>
 	<div>
 		<div class="fixed z-40 top-[0] left-[0] w-full">
-			<div class="flex justify-center items-center gap-3xs group bg-white">
+			<div
+				class="flex justify-center items-center gap-3xs group backdrop-blur-sm bg-white/80"
+			>
 				<OrganismNavPrimary :items="navItems" />
 			</div>
 		</div>
