@@ -9,10 +9,11 @@ export default defineNuxtConfig({
 			CONTENTFULL_BASE_URL: process.env.CONTENTFULL_BASE_URL,
 			VITE_GQL_HOST: process.env.VITE_GQL_HOST,
 			VITE_GQL_TOKEN: process.env.VITE_GQL_TOKEN,
+			ROBOTS: process.env.ROBOTS,
 		},
 	},
 	css: ["~/assets/styles/main.scss"],
-	modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "~/modules/robots", "~/modules/router"],
 	components: [
 		{ path: "~/components", extensions: ["vue"] },
 		{ path: "~/assets/svg", extensions: ["vue"], prefix: "svg" },
