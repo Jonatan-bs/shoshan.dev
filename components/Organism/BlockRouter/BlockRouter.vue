@@ -67,7 +67,7 @@
 									loading="lazy"
 									:src="project.teaserImage.url"
 									format="webp"
-									class="w-full h-full object-cover group-hover:scale-110 transition-[transform]"
+									class="w-full h-full object-cover group-hover:scale-105 transition-[transform]"
 									provider="contentful"
 									:alt="project.teaserImage.alt"
 									width="400"
